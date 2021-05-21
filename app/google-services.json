@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "195161384359",
+    "project_id": "easypass-dcff0",
+    "storage_bucket": "easypass-dcff0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195161384359:android:6ce77aa462b8cb85a40282",
+        "android_client_info": {
+          "package_name": "com.example.easypass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195161384359-g9b6hnh8mipteqa5f0u55jdud5avoutv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB62O41yzl9C4wcnv_EI5FvF6NDlLbWntw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195161384359-g9b6hnh8mipteqa5f0u55jdud5avoutv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
