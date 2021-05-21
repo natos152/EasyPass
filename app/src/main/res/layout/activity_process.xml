@@ -1,9 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProcessActivity">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".ProcessActivity">
 
+  <Space
+    android:id="@+id/space2"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    app:layout_constraintBottom_toTopOf="parent"
+    app:layout_constraintEnd_toStartOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="MissingConstraints" />
+
+  <Button
+    android:id="@+id/btn_upload_pass"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="122dp"
+    android:text="צילום דרכון"
+    android:onClick="onClick"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/welcome_message"
+    android:layout_width="0dp"
+    android:layout_height="61dp"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="29dp"
+    android:layout_marginEnd="38dp"
+    android:layout_marginBottom="32dp"
+    android:text=""
+    app:layout_constraintBottom_toTopOf="@+id/btn_upload_pass"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="49dp"
+    android:layout_marginEnd="38dp"
+    android:layout_marginBottom="50dp"
+    android:text="שלב ראשון"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/btn_upload_ID"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
+
+  <TextView
+    android:id="@+id/textView16"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="32dp"
+    android:layout_marginBottom="225dp"
+    android:text="שלב חמישי"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+  <TextView
+    android:id="@+id/textView19"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="63dp"
+    android:layout_marginEnd="37dp"
+    android:text="שלב שני"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+  <TextView
+    android:id="@+id/textView18"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="69dp"
+    android:layout_marginEnd="36dp"
+    android:text="שלב שלישי"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+  <TextView
+    android:id="@+id/textView17"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="66dp"
+    android:layout_marginEnd="38dp"
+    android:text="שלב רביעי"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+  <Button
+    android:id="@+id/btn_upload_family_tree"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="42dp"
+    android:text="עץ משפחה"
+    android:onClick="onClick"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_upload_police_crteif" />
+
+  <Button
+    android:id="@+id/btn_upload_police_crteif"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="37dp"
+    android:text="תעודת יושר"
+    android:onClick="onClick"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_upload_birthdate" />
+
+  <Button
+    android:id="@+id/btn_upload_birthdate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="33dp"
+    android:text="תעודת לידה"
+    android:onClick="onClick"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_upload_ID" />
+
+  <Button
+    android:id="@+id/btn_upload_ID"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="38dp"
+    android:text="צילום תעודת זהות"
+    android:onClick="onClick"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_upload_pass" />
 </androidx.constraintlayout.widget.ConstraintLayout>

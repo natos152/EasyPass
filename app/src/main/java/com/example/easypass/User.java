@@ -4,6 +4,7 @@ public class User {
     String Email;
     String UserName;
 
+
     public User(String email, String userName) {
         Email = email;
         UserName = userName;

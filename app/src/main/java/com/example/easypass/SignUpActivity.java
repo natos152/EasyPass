@@ -28,9 +28,9 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
-        initViews();
-        database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance("https://easypass-dcff0-default-rtdb.europe-west1.firebasedatabase.app/");
         myRef = database.getReference("Users");
+        initViews();
     }
 
     private void initViews() {
@@ -50,10 +50,9 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(Email.getText().toString(), Pass.getText().toString())
                 .addOnCompleteListener(SignUpActivity.this, task -> {
                     if (task.isSuccessful()) {
-                        User us = new User(Email.getText().toString(), UserName.getText().toString());
-                        myRef = database.getReference("Users").child(Objects.requireNonNull(mAuth.getUid()));
-                        myRef.setValue(us);
-                        startActivity(new Intent(SignUpActivity.this, SignUpActivity.class));
+                        User user = new User(Email.getText().toString(), UserName.getText().toString());
+                        myRef.child(mAuth.getUid()).setValue(user);
+                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                     } else {
                         //Error
                         Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
