@@ -17,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         imageView = findViewById(R.id.icon);
-        imageView.animate().rotationBy(-720).setDuration(DELAY_TIME);
+        imageView.animate().rotationBy(360).setDuration(DELAY_TIME);
 
         new Handler().postDelayed(new Runnable() {
             @Override
