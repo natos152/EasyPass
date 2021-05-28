@@ -75,6 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="12dp"
         android:layout_weight="1"
+        android:backgroundTint="#8BC34A"
         android:text="התחבר"
         android:textAllCaps="false" />
 
@@ -90,6 +91,7 @@
         android:layout_height="6dp"
         android:layout_weight="1"
         android:background="@drawable/original_icon"
+        android:backgroundTint="#8BC34A"
         android:text="הרשמה"
         android:textAllCaps="false" />
     </LinearLayout>

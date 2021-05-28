@@ -1,21 +1,18 @@
 package com.example.easypass;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class AdvancedRegisterActivity extends AppCompatActivity {
     EditText id, first_name, last_name, phone, address, apartment, zipCode, country;
@@ -23,27 +20,6 @@ public class AdvancedRegisterActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        ProgressDialog dialog = ProgressDialog.show(AdvancedRegisterActivity.this, "",
-//                "Loading. Please wait...", true);
-//        myRef.child(mAuth.getUid()).child("UserInfo").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
-//                String temp = snapshot.child("id").getValue(String.class);
-//                if(temp != null){
-//                    dialog.dismiss();
-//                    startActivity(new Intent(AdvancedRegisterActivity.this, ProcessActivity.class));
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull @org.jetbrains.annotations.NotNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +29,7 @@ public class AdvancedRegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance("https://easypass-dcff0-default-rtdb.europe-west1.firebasedatabase.app/");
         myRef = database.getReference("Users");
-        btn_Comp_Sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addDataToDB();
-                Intent i = new Intent(AdvancedRegisterActivity.this, ProcessActivity.class);
-                startActivity(i);
-            }
-        });
+        addDataToDB();
     }
 
     private void initViews() {
@@ -76,7 +45,25 @@ public class AdvancedRegisterActivity extends AppCompatActivity {
     }
 
     private void addDataToDB() {
-        PersonInfo pi = new PersonInfo(id.getText().toString(), first_name.getText().toString(), last_name.getText().toString(), phone.getText().toString(), address.getText().toString(), apartment.getText().toString(), zipCode.getText().toString(), country.getText().toString());
-        myRef.child(mAuth.getUid()).child("UserInfo").setValue(pi);
+        btn_Comp_Sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (id.getText().toString().equals("") ||
+                        first_name.getText().toString().equals("") ||
+                        last_name.getText().toString().equals("") ||
+                        phone.getText().toString().equals("") ||
+                        address.getText().toString().equals("") ||
+                        apartment.getText().toString().equals("") ||
+                        zipCode.getText().toString().equals("") ||
+                        country.getText().toString().equals(""))
+                {
+                    Toast.makeText(getApplicationContext(), "אנא מלא/י את כל השדות", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                PersonInfo pi = new PersonInfo(id.getText().toString(), first_name.getText().toString(), last_name.getText().toString(), phone.getText().toString(), address.getText().toString(), apartment.getText().toString(), zipCode.getText().toString(), country.getText().toString());
+                myRef.child(mAuth.getUid()).child("UserInfo").setValue(pi);
+                startActivity(new Intent(AdvancedRegisterActivity.this, ProcessActivity.class));
+            }
+        });
     }
 }

@@ -1,91 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".SignUpActivity">
 
-    <EditText
-        android:id="@+id/sign_user"
-        android:layout_width="227dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
-        android:layout_weight="2"
-        android:hint="שם משתמש"
-        app:layout_constraintBottom_toTopOf="@+id/sign_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_email" />
+  <EditText
+    android:id="@+id/sign_user"
+    android:layout_width="227dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="8dp"
+    android:layout_weight="2"
+    android:hint="שם משתמש"
+    app:layout_constraintBottom_toTopOf="@+id/sign_pass"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/sign_email" />
 
-    <EditText
-        android:id="@+id/sign_pass"
-        android:layout_width="227dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
-        android:layout_weight="2"
-        android:hint="סיסמא"
-        android:inputType="textPassword"
-        android:textAlignment="textEnd"
-        app:layout_constraintBottom_toTopOf="@+id/sign_confirm_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_user" />
+  <EditText
+    android:id="@+id/sign_pass"
+    android:layout_width="227dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="6dp"
+    android:layout_weight="2"
+    android:hint="סיסמא"
+    android:inputType="textPassword"
+    android:textAlignment="textEnd"
+    app:layout_constraintBottom_toTopOf="@+id/sign_confirm_pass"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/sign_user" />
 
-    <Button
-        android:id="@+id/btn_sign_up_cont"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="260dp"
-        android:onClick="onClick"
-        android:text="סיים הרשמה"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_confirm_pass" />
+  <Button
+    android:id="@+id/btn_sign_up_cont"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="41dp"
+    android:layout_marginBottom="260dp"
+    android:onClick="onClick"
+    android:text="סיים הרשמה"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/sign_confirm_pass"
+    app:layout_constraintTop_toBottomOf="@+id/sign_confirm_pass" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="26dp"
-        android:text="הרשמת משתמש"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/purple_700"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/sign_email"
-        app:layout_constraintEnd_toEndOf="@+id/sign_email"
-        app:layout_constraintTop_toTopOf="parent" />
+  <TextView
+    android:id="@+id/textView3"
+    android:layout_width="196dp"
+    android:layout_height="0dp"
+    android:layout_marginTop="42dp"
+    android:layout_marginBottom="28dp"
+    android:text="הרשמת משתמש"
+    android:textAlignment="center"
+    android:textColor="@color/purple_700"
+    android:textDirection="firstStrongRtl"
+    android:textSize="24sp"
+    android:textStyle="bold|italic"
+    android:visibility="visible"
+    app:layout_constraintBottom_toTopOf="@+id/sign_email"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/sign_confirm_pass"
-        android:layout_width="226dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="26dp"
-        android:layout_weight="2"
-        android:hint="הזן סיסמא שוב"
-        android:inputType="textPassword"
-        android:textAlignment="textEnd"
-        app:layout_constraintBottom_toTopOf="@+id/btn_sign_up_cont"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_pass" />
+  <EditText
+    android:id="@+id/sign_confirm_pass"
+    android:layout_width="226dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="26dp"
+    android:layout_weight="2"
+    android:hint="הזן סיסמא שוב"
+    android:inputType="textPassword"
+    android:textAlignment="textEnd"
+    app:layout_constraintBottom_toTopOf="@+id/btn_sign_up_cont"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/sign_pass" />
 
-    <EditText
-        android:id="@+id/sign_email"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="2"
-        android:hint="אימייל"
-        app:layout_constraintBottom_toTopOf="@+id/sign_user"
-        app:layout_constraintEnd_toEndOf="@+id/sign_user"
-        app:layout_constraintStart_toStartOf="@+id/sign_user"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+  <EditText
+    android:id="@+id/sign_email"
+    android:layout_width="227dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="6dp"
+    android:layout_weight="2"
+    android:hint="אימייל"
+    app:layout_constraintBottom_toTopOf="@+id/sign_user"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
