@@ -43,21 +43,27 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void signUpUser() {
+        if (Email.getText().toString().equals("") || UserName.getText().toString().equals("") || Pass.getText().toString().equals("") || Repass.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "אנא מלא/י את כל השדות", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (!Pass.getText().toString().equals(Repass.getText().toString())) {
             Toast.makeText(getApplicationContext(), "סיסמא אינה תואמת!", Toast.LENGTH_LONG).show();
             return;
+        } else {
+            mAuth.createUserWithEmailAndPassword(Email.getText().toString(), Pass.getText().toString())
+                    .addOnCompleteListener(SignUpActivity.this, task -> {
+                        if (task.isSuccessful()) {
+                            User user = new User(Email.getText().toString(), UserName.getText().toString());
+                            myRef.child(mAuth.getUid()).setValue(user);
+                            startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                        } else {
+                            //Error
+                            Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
         }
-        mAuth.createUserWithEmailAndPassword(Email.getText().toString(), Pass.getText().toString())
-                .addOnCompleteListener(SignUpActivity.this, task -> {
-                    if (task.isSuccessful()) {
-                        User user = new User(Email.getText().toString(), UserName.getText().toString());
-                        myRef.child(mAuth.getUid()).setValue(user);
-                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-                    } else {
-                        //Error
-                        Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+
     }
 
     public void onClick(View view) {
