@@ -6,9 +6,11 @@
   android:layout_height="match_parent"
   android:orientation="vertical"
   android:weightSum="20"
+  android:background="@drawable/background_portugal"
   tools:context=".MainActivity">
 
   <Space
+
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1" />
@@ -16,10 +18,11 @@
   <ImageView
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="4"
+    android:layout_weight="2.5"
     android:src="@mipmap/main_new_icon_round" />
 
   <Space
+
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1" />
@@ -70,7 +73,7 @@
         android:id="@+id/login_btn"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="12dp"
         android:layout_weight="1"
         android:text="התחבר"
         android:textAllCaps="false" />
@@ -84,8 +87,9 @@
         android:id="@+id/sign_up_btn"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="6dp"
         android:layout_weight="1"
+        android:background="@drawable/original_icon"
         android:text="הרשמה"
         android:textAllCaps="false" />
     </LinearLayout>
