@@ -52,7 +52,11 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:hint="אימייל"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#040404"
+        android:textColorHighlight="#040404"
+        android:textColorHint="#040404"
+        android:textColorLink="#040404" />
 
 
       <EditText
@@ -62,7 +66,11 @@
         android:layout_weight="2"
         android:hint="סיסמא"
         android:inputType="textPassword"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#040404"
+        android:textColorHighlight="#040404"
+        android:textColorHint="#040404"
+        android:textColorLink="#040404" />
 
       <Space
         android:layout_width="match_parent"

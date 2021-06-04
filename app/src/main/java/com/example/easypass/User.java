@@ -4,14 +4,15 @@ public class User {
     String Email;
     String UserName;
 
+    public User() {
+    }
 
     public User(String email, String userName) {
         Email = email;
         UserName = userName;
     }
 
-    public User() {
-    }
+
 
     public String getEmail() {
         return Email;
