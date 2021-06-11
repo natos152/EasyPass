@@ -5,7 +5,7 @@ public class DocumentUser {
     String Id_doc;
     String Birthdate_doc;
     String Police_certificate;
-
+    String Family_Tree;
 
 
     public DocumentUser(String passport_doc, String id_doc, String birthdate_doc, String police_certificate) {
@@ -14,6 +14,10 @@ public class DocumentUser {
         Birthdate_doc = birthdate_doc;
         Police_certificate = police_certificate;
     }
+    public DocumentUser(String family_Tree) {
+        Family_Tree = family_Tree;
+    }
+
     public DocumentUser() {
 
     }
@@ -48,5 +52,13 @@ public class DocumentUser {
 
     public void setPolice_certificate(String police_certificate) {
         Police_certificate = police_certificate;
+    }
+
+    public String getFamily_Tree() {
+        return Family_Tree;
+    }
+
+    public void setFamily_Tree(String family_Tree) {
+        Family_Tree = family_Tree;
     }
 }

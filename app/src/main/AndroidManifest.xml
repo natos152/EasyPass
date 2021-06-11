@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.example.easypass">
-  <uses-permission android:name="android.permission.CAMERA"
+
+  <uses-permission
+    android:name="android.permission.CAMERA"
     android:required="true" />
+
   <application
     android:allowBackup="true"
     android:icon="@mipmap/main_new_icon_round"
@@ -10,7 +13,8 @@
     android:roundIcon="@mipmap/main_new_icon"
     android:supportsRtl="true"
     android:theme="@style/Theme.EasyPass">
-    <activity android:name=".AdvancedRegisterActivity"></activity>
+    <activity android:name=".SatutsRequestActivity"></activity>
+    <activity android:name=".AdvancedRegisterActivity" />
     <activity android:name=".ValidationProcess" />
     <activity android:name=".SplashScreenActivity">
       <intent-filter>

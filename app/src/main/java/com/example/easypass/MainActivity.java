@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signInUser() {
-        if (Email.getText().toString() == null && Pass.getText().toString() == null) {
+        if (Email.getText().toString().equals("") && Pass.getText().toString().equals("")) {
             Toast.makeText(MainActivity.this, "אנא מלא/י את כל השדות", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            Toast.makeText(MainActivity.this, "ההתחברות נכשלה", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "משתמש אינו תקין, בדוק את פרטיך", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
