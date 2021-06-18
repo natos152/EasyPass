@@ -162,6 +162,7 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="1. מרוקו"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
     android:textSize="16sp" />
 
   <RadioGroup

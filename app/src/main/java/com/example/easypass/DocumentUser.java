@@ -7,6 +7,11 @@ public class DocumentUser {
     String Police_certificate;
     String Family_Tree;
 
+    public DocumentUser() { }
+
+    public DocumentUser(String family_Tree) {
+        Family_Tree = family_Tree;
+    }
 
     public DocumentUser(String passport_doc, String id_doc, String birthdate_doc, String police_certificate) {
         Passport_doc = passport_doc;
@@ -14,13 +19,7 @@ public class DocumentUser {
         Birthdate_doc = birthdate_doc;
         Police_certificate = police_certificate;
     }
-    public DocumentUser(String family_Tree) {
-        Family_Tree = family_Tree;
-    }
 
-    public DocumentUser() {
-
-    }
 
     public String getPassport_doc() {
         return Passport_doc;
