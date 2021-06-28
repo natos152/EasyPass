@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -43,6 +44,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
 public class ProcessActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "ProcessActivity";
     TextView welcome_mess;
     Button btnPassport, btnID, btnBirthdate, btnPoliceCertificate, btnFamilyTree, btnDownLoad;
     FirebaseAuth mAuth;
@@ -57,7 +59,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     String fileName = "";
     ProgressDialog dialog;
     String user = null;
-    Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice;
+    Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice, URI = null;
     static int counter = 0;
 
     @Override
@@ -164,12 +166,38 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(getApplicationContext(), "אנא העלאה קובץ עץ משפחה !", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-
+                    sendEmail();
                     Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ProcessActivity.this, SatutsRequestActivity.class));
                 }
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
+        }
+    }
+
+    public void sendEmail() {
+        Log.d(TAG, "send email...");
+
+        String[] TO = {"epass876@gmail.com"};
+        String[] CC = {"ron96t@gmail.com"};
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+            Log.i("Finished sending email...", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(ProcessActivity.this,
+                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
 
