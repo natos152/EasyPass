@@ -164,6 +164,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(getApplicationContext(), "אנא העלאה קובץ עץ משפחה !", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
+
                     Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ProcessActivity.this, SatutsRequestActivity.class));
                 }
@@ -305,36 +306,10 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                                     Toast.makeText(ProcessActivity.this, "העלאה נכשלה בדוק את הקובץ", Toast.LENGTH_SHORT).show();
                                 }
                             }
-
                         });
                     else {
                         Toast.makeText(ProcessActivity.this, "uri is null", Toast.LENGTH_SHORT).show();
                     }
-                    //final StorageReference filepath = storageReference.child(message + getFileExtension(UriTree));
-//                    Toast.makeText(ProcessActivity.this, filepath.getName(), Toast.LENGTH_SHORT).show();
-//                    filepath.putFile(UriTree).continueWithTask(new Continuation() {
-//                        @Override
-//                        public Object then(@NonNull Task task) throws Exception {
-//                            if (!task.isSuccessful()) {
-//                                throw task.getException();
-//                            }
-//                            return filepath.getDownloadUrl();
-//                        }
-//                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                    @Override
-//                    public void onComplete (@NonNull Task < Uri > task)
-//                    {
-//                        if (task.isSuccessful()) {
-//                            Uri uri = task.getResult();
-//                            myRef.child("userDocuments").child("FamilyTree").setValue(uri.toString());
-//                            dialog.dismiss();
-//                            Toast.makeText(ProcessActivity.this, "העלאה הועלה בהצלחה", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            dialog.dismiss();
-//                            Toast.makeText(ProcessActivity.this, "העלאה נכשלה בדוק את הקובץ", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
                 }
                 break;
         }
