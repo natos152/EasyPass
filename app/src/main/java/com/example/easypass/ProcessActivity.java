@@ -278,34 +278,35 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     progressDialog.setMessage("Uploading...");
                     progressDialog.show();
                     Date date = new Date();
-                    final String message = user + " " + "family_tree" + date.getDate();
-                    Toast.makeText(ProcessActivity.this, UriTree.toString(), Toast.LENGTH_SHORT).show();
                     UriTree = data.getData();
+                    final String message = user + "family_tree" + date.getDate();
                     storageReference = FirebaseStorage.getInstance().getReference();
-                    storageReference = storageReference.child(mAuth.getUid()).child("userDocuments").child(message + "." + getFileExtension(UriTree));
-                    if(UriTree !=null)
-                        storageReference
-                            .putFile(UriTree)
-                            .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                                    storageReference.getDownloadUrl()
-                                            .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                                @Override
-                                                public void onSuccess(Uri uri) {
-                                                    if (task.isSuccessful()) {
-                                                        myRef.child("userDocuments").child("FamilyTree").setValue(uri.toString());
-                                                        dialog.dismiss();
-                                                        Toast.makeText(ProcessActivity.this, "העלאה הועלה בהצלחה", Toast.LENGTH_SHORT).show();
-                                                        progressDialog.dismiss();
-                                                    } else {
-                                                        dialog.dismiss();
-                                                        Toast.makeText(ProcessActivity.this, "העלאה נכשלה בדוק את הקובץ", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                }
-                                            });
+                    Toast.makeText(ProcessActivity.this, UriTree.toString(), Toast.LENGTH_SHORT).show();
+                    final StorageReference filepath = storageReference.child(mAuth.getUid()).child("userDocuments").child(message + "." + getFileExtension(UriTree));
+                    if (UriTree != null)
+                        filepath.putFile(UriTree).continueWithTask(new Continuation() {
+                            @Override
+                            public Object then(@NonNull Task task) throws Exception {
+                                if (!task.isSuccessful()) {
+                                    throw task.getException();
                                 }
-                            });
+                                return filepath.getDownloadUrl();
+                            }
+                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if (task.isSuccessful()) {
+                                    progressDialog.dismiss();
+                                    UriTree = task.getResult();
+                                    myRef.child("userDocuments").child("FamilyTree").setValue(UriTree.toString());
+                                    Toast.makeText(ProcessActivity.this, "העלאה הועלה בהצלחה", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    dialog.dismiss();
+                                    Toast.makeText(ProcessActivity.this, "העלאה נכשלה בדוק את הקובץ", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                        });
                     else {
                         Toast.makeText(ProcessActivity.this, "uri is null", Toast.LENGTH_SHORT).show();
                     }
@@ -321,7 +322,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
 //                        }
 //                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
 //                    @Override
-//                    public void onComplete (@NonNull Task < Uri > task) {
+//                    public void onComplete (@NonNull Task < Uri > task)
+//                    {
 //                        if (task.isSuccessful()) {
 //                            Uri uri = task.getResult();
 //                            myRef.child("userDocuments").child("FamilyTree").setValue(uri.toString());
@@ -336,7 +338,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
         }
-
     }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
