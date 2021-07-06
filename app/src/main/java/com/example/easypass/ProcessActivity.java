@@ -42,6 +42,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.UUID;
 
 public class ProcessActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ProcessActivity";
@@ -50,11 +51,11 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    StorageReference storageReference;
     static final int PERMISSION_CAMERA = 888;
     static final int CAPTURE_IMAGE = 1024;
     static final int PICKFILE_RESULT_CODE = 1;
     ImageView PassPortPic, IdPic, BirthdatePic, PolicePic, FamilyTreePic;
-    StorageReference storageReference;
     String imageName = "";
     String fileName = "";
     ProgressDialog dialog;
@@ -144,26 +145,26 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_upload_pass:
-                imageName = "passport";
-                takeImage();
-                break;
-            case R.id.btn_upload_ID:
-                imageName = "id";
-                takeImage();
-                break;
-            case R.id.btn_upload_birthdate:
-                imageName = "birthdate";
-                takeImage();
-                break;
-            case R.id.btn_upload_police_crteif:
-                imageName = "police";
-                takeImage();
-                break;
-            case R.id.btn_upload_family_tree:
-                fileName = "family";
-                uploadFile();
-                break;
+//            case R.id.btn_upload_pass:
+//                imageName = "passport";
+//                takeImage();
+//                break;
+//            case R.id.btn_upload_ID:
+//                imageName = "id";
+//                takeImage();
+//                break;
+//            case R.id.btn_upload_birthdate:
+//                imageName = "birthdate";
+//                takeImage();
+//                break;
+//            case R.id.btn_upload_police_crteif:
+//                imageName = "police";
+//                takeImage();
+//                break;
+//            case R.id.btn_upload_family_tree:
+//                fileName = "family";
+//                uploadFile();
+//                break;
             case R.id.downloadBtn:
 //                if (PolicePic.getDrawable() == null || BirthdatePic.getDrawable() == null || IdPic.getDrawable() == null || PassPortPic.getDrawable() == null) {
 //                    Toast.makeText(getApplicationContext(), "אנא העלאה את כל המסמכים !", Toast.LENGTH_SHORT).show();
@@ -173,6 +174,10 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
 //                    return;
 //                } else {
                 Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
+                String case_number = UUID.randomUUID().toString();
+                case_number.substring(0,10);
+                myRef.child("Case number").setValue(case_number);
+                myRef.child("Status Request").setValue(1);
                 startActivity(new Intent(ProcessActivity.this, SatutsRequestActivity.class));
                 sendEmail();
 //                }
@@ -233,13 +238,13 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void uploadFile() {
-        Intent galleryIntent = new Intent();
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        // We will be redirected to choose pdf
-        galleryIntent.setType("application/pdf");
-        startActivityForResult(galleryIntent, 1);
-    }
+//    private void uploadFile() {
+//        Intent galleryIntent = new Intent();
+//        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+//        // We will be redirected to choose pdf
+//        galleryIntent.setType("application/pdf");
+//        startActivityForResult(galleryIntent, 1);
+//    }
 
 
     private void uploadToFirestorage(Uri uri) {
@@ -353,6 +358,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(ProcessActivity.this, UriTree.toString(), Toast.LENGTH_SHORT).show();
                     final StorageReference filepath = storageReference.child(mAuth.getUid()).child("userDocuments").child(message + "." + getFileExtension(UriTree));
                     UploadToFireBaseFromMediaStorage(UriTree, filepath);
+                    FamilyTreePic.onVisibilityAggregated(true);
                 }
                 break;
         }
