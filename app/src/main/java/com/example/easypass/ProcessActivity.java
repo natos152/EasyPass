@@ -145,6 +145,9 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
 
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_ContactUs:
+                startActivity(new Intent(ProcessActivity.this, ContactUs.class));
+                break;
 //            case R.id.btn_upload_pass:
 //                imageName = "passport";
 //                takeImage();
@@ -175,10 +178,10 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
 //                } else {
                 Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
                 String case_number = UUID.randomUUID().toString();
-                case_number.substring(0,10);
+                case_number.substring(0, 10);
                 myRef.child("Case number").setValue(case_number);
                 myRef.child("Status Request").setValue(1);
-                startActivity(new Intent(ProcessActivity.this, SatutsRequestActivity.class));
+                startActivity(new Intent(ProcessActivity.this, StatusRequestActivity.class));
                 sendEmail();
 //                }
                 break;

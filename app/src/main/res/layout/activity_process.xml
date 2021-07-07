@@ -21,194 +21,215 @@
     android:id="@+id/btn_upload_pass"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="88dp"
     android:layout_marginEnd="29dp"
     android:onClick="onClick"
     android:text="צילום דרכון"
+    app:layout_constraintBaseline_toBaselineOf="@+id/textView"
     app:layout_constraintEnd_toStartOf="@+id/textView"
-    app:layout_constraintStart_toEndOf="@+id/passport_view"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintStart_toEndOf="@+id/btn_ContactUs" />
 
-  <TextView
-    android:id="@+id/textView"
+  <Button
+    android:id="@+id/btn_upload_birthdate"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="35dp"
-    android:text="שלב ראשון"
-    android:textStyle="bold"
-    app:layout_constraintBaseline_toBaselineOf="@+id/btn_upload_pass"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/btn_upload_pass" />
+    android:layout_marginEnd="14dp"
+    android:onClick="onClick"
+    android:text="תעודת לידה"
+    app:layout_constraintBaseline_toBaselineOf="@+id/textView18"
+    app:layout_constraintEnd_toStartOf="@+id/textView18"
+    app:layout_constraintStart_toEndOf="@+id/birthdate_view" />
 
   <TextView
-    android:id="@+id/textView19"
+    android:id="@+id/textView16"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="38dp"
-    android:text="שלב שני"
+    android:layout_marginEnd="30dp"
+    android:layout_marginBottom="26dp"
+    android:text="שלב חמישי"
     android:textStyle="bold"
-    app:layout_constraintBaseline_toBaselineOf="@+id/btn_upload_ID"
+    app:layout_constraintBottom_toTopOf="@+id/downloadBtn"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/btn_upload_ID" />
+    app:layout_constraintStart_toEndOf="@+id/btn_upload_family_tree"
+    app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
   <ImageView
     android:id="@+id/birthdate_view"
     android:layout_width="0dp"
-    android:layout_height="100dp"
-    android:layout_marginStart="16dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="15dp"
     android:layout_marginEnd="40dp"
-    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_marginBottom="36dp"
+    app:layout_constraintBottom_toTopOf="@+id/police_view"
     app:layout_constraintEnd_toStartOf="@+id/btn_upload_birthdate"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/id_view"
+    tools:srcCompat="@tools:sample/avatars" />
+
+  <ImageView
+    android:id="@+id/police_view"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="21dp"
+    android:layout_marginEnd="42dp"
+    android:layout_marginBottom="36dp"
+    app:layout_constraintBottom_toTopOf="@+id/tree_view"
+    app:layout_constraintEnd_toStartOf="@+id/btn_upload_police_crteif"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/birthdate_view"
     tools:srcCompat="@tools:sample/avatars" />
 
   <Button
     android:id="@+id/btn_upload_family_tree"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="19dp"
-    android:layout_marginBottom="24dp"
+    android:layout_marginEnd="36dp"
+    android:layout_marginBottom="11dp"
     android:onClick="onClick"
     android:text="עץ משפחה"
     app:layout_constraintBottom_toTopOf="@+id/downloadBtn"
-    app:layout_constraintStart_toStartOf="@+id/downloadBtn" />
+    app:layout_constraintEnd_toStartOf="@+id/textView16"
+    app:layout_constraintStart_toEndOf="@+id/tree_view" />
 
   <ImageView
-    android:id="@+id/passport_view"
+    android:id="@+id/tree_view"
     android:layout_width="0dp"
-    android:layout_height="100dp"
-    android:layout_marginStart="22dp"
-    android:layout_marginTop="74dp"
-    android:layout_marginEnd="38dp"
-    android:layout_marginBottom="72dp"
-    app:layout_constraintBottom_toBottomOf="@+id/textView19"
+    android:layout_height="0dp"
+    android:layout_marginStart="56dp"
+    android:layout_marginEnd="70dp"
+    android:layout_marginBottom="81dp"
+    android:src="@drawable/v_icon"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/btn_upload_family_tree"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/police_view" />
+
+  <TextView
+    android:id="@+id/textView17"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="36dp"
+    android:layout_marginBottom="86dp"
+    android:text="שלב רביעי"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/textView16"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/btn_upload_police_crteif"
+    app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+  <Button
+    android:id="@+id/btn_ContactUs"
+    android:layout_width="105dp"
+    android:layout_height="64dp"
+    android:layout_marginStart="21dp"
+    android:layout_marginEnd="27dp"
+    android:layout_marginBottom="5dp"
+    android:text="יצירת קשר"
+    android:onClick="onClick"
+    app:layout_constraintBottom_toTopOf="@+id/passport_view"
     app:layout_constraintEnd_toStartOf="@+id/btn_upload_pass"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:srcCompat="@tools:sample/avatars" />
+    app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
 
   <TextView
     android:id="@+id/textView18"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="38dp"
+    android:layout_marginBottom="119dp"
     android:text="שלב שלישי"
     android:textStyle="bold"
-    app:layout_constraintBaseline_toBaselineOf="@+id/btn_upload_birthdate"
+    app:layout_constraintBottom_toTopOf="@+id/textView17"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/btn_upload_birthdate" />
-
-  <TextView
-    android:id="@+id/textView17"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="35dp"
-    android:text="שלב רביעי"
-    android:textStyle="bold"
-    app:layout_constraintBaseline_toBaselineOf="@+id/btn_upload_police_crteif"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/btn_upload_police_crteif" />
-
-  <TextView
-    android:id="@+id/textView16"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="31dp"
-    android:text="שלב חמישי"
-    android:textStyle="bold"
-    app:layout_constraintBaseline_toBaselineOf="@+id/btn_upload_family_tree"
-    app:layout_constraintEnd_toEndOf="parent" />
-
-  <Button
-    android:id="@+id/btn_upload_birthdate"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="25dp"
-    android:layout_marginEnd="15dp"
-    android:onClick="onClick"
-    android:text="תעודת לידה"
-    app:layout_constraintEnd_toStartOf="@+id/textView18"
-    app:layout_constraintStart_toEndOf="@+id/birthdate_view"
-    app:layout_constraintTop_toTopOf="@+id/birthdate_view" />
+    app:layout_constraintStart_toEndOf="@+id/btn_upload_birthdate"
+    app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
   <Button
     android:id="@+id/btn_upload_ID"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="26dp"
     android:layout_marginEnd="13dp"
     android:onClick="onClick"
     android:text="צילום תעודת זהות"
+    app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
     app:layout_constraintEnd_toStartOf="@+id/textView19"
-    app:layout_constraintStart_toEndOf="@+id/id_view"
-    app:layout_constraintTop_toTopOf="@+id/id_view" />
-
-  <ImageView
-    android:id="@+id/tree_view"
-    android:layout_width="38dp"
-    android:layout_height="0dp"
-    android:layout_marginTop="7dp"
-    android:layout_marginEnd="316dp"
-    android:layout_marginBottom="7dp"
-    android:src="@drawable/v_icon"
-    android:visibility="invisible"
-    app:layout_constraintBottom_toBottomOf="@+id/btn_upload_family_tree"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/btn_upload_family_tree" />
-
-  <ImageView
-    android:id="@+id/police_view"
-    android:layout_width="0dp"
-    android:layout_height="101dp"
-    android:layout_marginStart="22dp"
-    android:layout_marginTop="78dp"
-    android:layout_marginEnd="41dp"
-    android:layout_marginBottom="78dp"
-    app:layout_constraintBottom_toBottomOf="@+id/btn_upload_family_tree"
-    app:layout_constraintEnd_toStartOf="@+id/btn_upload_police_crteif"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView18"
-    tools:srcCompat="@tools:sample/avatars" />
+    app:layout_constraintStart_toEndOf="@+id/id_view" />
 
   <Button
     android:id="@+id/btn_upload_police_crteif"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="25dp"
-    android:layout_marginEnd="26dp"
+    android:layout_marginEnd="25dp"
     android:onClick="onClick"
     android:text="תעודת יושר"
+    app:layout_constraintBaseline_toBaselineOf="@+id/textView17"
     app:layout_constraintEnd_toStartOf="@+id/textView17"
-    app:layout_constraintStart_toEndOf="@+id/police_view"
-    app:layout_constraintTop_toTopOf="@+id/police_view" />
+    app:layout_constraintStart_toEndOf="@+id/police_view" />
 
   <ImageView
     android:id="@+id/id_view"
     android:layout_width="0dp"
-    android:layout_height="101dp"
-    android:layout_marginStart="23dp"
-    android:layout_marginTop="99dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="22dp"
     android:layout_marginEnd="20dp"
-    android:layout_marginBottom="101dp"
-    app:layout_constraintBottom_toBottomOf="@+id/btn_upload_birthdate"
+    android:layout_marginBottom="29dp"
+    app:layout_constraintBottom_toTopOf="@+id/birthdate_view"
     app:layout_constraintEnd_toStartOf="@+id/btn_upload_ID"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/btn_upload_pass"
+    app:layout_constraintTop_toBottomOf="@+id/passport_view"
     tools:srcCompat="@tools:sample/avatars" />
+
+  <TextView
+    android:id="@+id/textView19"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="39dp"
+    android:layout_marginBottom="109dp"
+    android:text="שלב שני"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/textView18"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/btn_upload_ID"
+    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+  <ImageView
+    android:id="@+id/passport_view"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="21dp"
+    android:layout_marginEnd="179dp"
+    android:layout_marginBottom="12dp"
+    app:layout_constraintBottom_toTopOf="@+id/id_view"
+    app:layout_constraintEnd_toStartOf="@+id/textView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_ContactUs"
+    tools:srcCompat="@tools:sample/avatars" />
+
+  <TextView
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="36dp"
+    android:layout_marginBottom="107dp"
+    android:text="שלב ראשון"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/textView19"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/passport_view"
+    app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
 
   <TextView
     android:id="@+id/welcome_message"
     android:layout_width="0dp"
-    android:layout_height="38dp"
-    android:layout_marginStart="38dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="30dp"
     android:layout_marginTop="16dp"
-    android:layout_marginEnd="38dp"
-    android:layout_marginBottom="20dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginBottom="73dp"
     android:textSize="20sp"
     android:textStyle="bold"
     android:visibility="visible"
-    app:layout_constraintBottom_toTopOf="@+id/passport_view"
+    app:layout_constraintBottom_toTopOf="@+id/textView"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -218,12 +239,13 @@
     android:id="@+id/downloadBtn"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="28dp"
+    android:layout_marginEnd="7dp"
+    android:layout_marginBottom="16dp"
     android:onClick="onClick"
     android:text="שליחת התיק"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="@+id/btn_upload_family_tree"
+    app:layout_constraintTop_toBottomOf="@+id/textView16"
     tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

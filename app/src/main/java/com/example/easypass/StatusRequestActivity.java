@@ -15,13 +15,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class SatutsRequestActivity extends AppCompatActivity {
+public class StatusRequestActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
     StorageReference storageReference;
     String number_status = null;
-    TextView st1;
+    TextView st1, show_case_number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,7 @@ public class SatutsRequestActivity extends AppCompatActivity {
     private void initViews() {
         mAuth = FirebaseAuth.getInstance();
         myRef = database.getReference("Users").child(mAuth.getUid());
-        st1 = findViewById(R.id.textView22);
+        st1 = findViewById(R.id.title);
 
     }
     private void readFromDB() {
@@ -48,6 +48,7 @@ public class SatutsRequestActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 number_status = snapshot.child("Status Request").getValue(String.class);
+                show_case_number.setText("תיק מספר :  " + number_status);
                 CheckStatus(number_status);
             }
 

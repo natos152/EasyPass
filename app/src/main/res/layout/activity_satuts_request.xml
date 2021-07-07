@@ -4,15 +4,221 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".SatutsRequestActivity">
+  tools:context=".StatusRequestActivity">
 
   <TextView
-    android:id="@+id/textView22"
+    android:id="@+id/case_num"
+    android:layout_width="0dp"
+    android:layout_height="38dp"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginEnd="38dp"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:visibility="visible"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:visibility="visible" />
+
+  <TextView
+    android:id="@+id/title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="120dp"
-    android:layout_marginTop="60dp"
     android:text="סטטוס בקשה"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    tools:layout_editor_absoluteX="157dp"
+    tools:layout_editor_absoluteY="28dp" />
+
+  <TextView
+    android:id="@+id/oneLevelText"
+    android:layout_width="182dp"
+    android:layout_height="23dp"
+    android:text="המסמכים הועלו למערכת"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    tools:layout_editor_absoluteX="193dp"
+    tools:layout_editor_absoluteY="134dp" />
+
+
+  <View
+    android:id="@+id/statusSecond3"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:background="@drawable/shape_status_remaining"
+    app:layout_constraintBottom_toTopOf="@+id/line4"
+    tools:layout_editor_absoluteX="37dp" />
+
+  <ImageView
+    android:id="@+id/line4"
+    android:layout_width="4dp"
+    android:layout_height="90dp"
+    android:background="#757575"
+    app:layout_constraintBottom_toTopOf="@+id/statusSecond4"
+    app:srcCompat="@android:drawable/status_bar_item_app_background"
+    tools:layout_editor_absoluteX="44dp" />
+
+  <View
+    android:id="@+id/statusSecond4"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:background="@drawable/shape_status_remaining"
+    tools:layout_editor_absoluteX="37dp"
+    tools:layout_editor_absoluteY="653dp" />
+
+
+  <View
+    android:id="@+id/statusFirst"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:background="@drawable/shape_status_completed"
+    tools:layout_editor_absoluteX="37dp"
+    tools:layout_editor_absoluteY="132dp" />
+
+  <ImageView
+    android:id="@+id/ImgDocPlaced"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="37dp"
+    android:layout_marginEnd="36dp"
+    android:src="@drawable/one"
+    app:layout_constraintEnd_toStartOf="@+id/oneLevelText"
+    app:layout_constraintStart_toEndOf="@+id/statusFirst"
+    tools:layout_editor_absoluteY="111dp" />
+
+  <ImageView
+    android:id="@+id/line"
+    android:layout_width="4dp"
+    android:layout_height="115dp"
+    android:background="#757575"
+    app:layout_constraintTop_toBottomOf="@+id/statusFirst"
+    app:srcCompat="@android:drawable/status_bar_item_app_background"
+    tools:layout_editor_absoluteX="44dp" />
+
+  <View
+    android:id="@+id/statusSecond2"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:background="@drawable/shape_status_remaining"
+    app:layout_constraintBottom_toTopOf="@+id/line3"
+    tools:layout_editor_absoluteX="37dp" />
+
+  <ImageView
+    android:id="@+id/line3"
+    android:layout_width="4dp"
+    android:layout_height="115dp"
+    android:background="#757575"
+    app:srcCompat="@android:drawable/status_bar_item_app_background"
+    tools:layout_editor_absoluteX="44dp"
+    tools:layout_editor_absoluteY="426dp" />
+
+  <ImageView
+    android:id="@+id/imgDocPlaced2"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="41dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/tree"
+    app:layout_constraintStart_toEndOf="@+id/statusSecond3"
+    tools:layout_editor_absoluteY="492dp" />
+
+  <ImageView
+    android:id="@+id/imgDocPlaced"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="41dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/four"
+    app:layout_constraintStart_toEndOf="@+id/statusSecond2"
+    tools:layout_editor_absoluteY="379dp" />
+
+  <TextView
+    android:id="@+id/oneLevelText4"
+    android:layout_width="170dp"
+    android:layout_height="23dp"
+    android:layout_marginStart="41dp"
+    android:text="הדרכון בתהליך הנפקה"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/imgDocPlaced2"
+    tools:layout_editor_absoluteY="520dp" />
+
+  <ImageView
+    android:id="@+id/imgDocPlaced3"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="44dp"
+    android:layout_marginEnd="56dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/five"
+    app:layout_constraintEnd_toStartOf="@+id/oneLevelText5"
+    app:layout_constraintStart_toEndOf="@+id/statusSecond4"
+    tools:layout_editor_absoluteY="614dp" />
+
+  <ImageView
+    android:id="@+id/ImgDocPlaced2"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginEnd="31dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/two"
+    app:layout_constraintEnd_toStartOf="@+id/oneLevelText2"
+    tools:layout_editor_absoluteY="250dp" />
+
+  <View
+    android:id="@+id/statusSecond"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginEnd="31dp"
+    android:background="@drawable/shape_status_current"
+    app:layout_constraintEnd_toStartOf="@+id/ImgDocPlaced2"
+    tools:layout_editor_absoluteY="267dp" />
+
+  <ImageView
+    android:id="@+id/line2"
+    android:layout_width="4dp"
+    android:layout_height="115dp"
+    android:layout_marginTop="1dp"
+    android:background="#757575"
+    app:layout_constraintTop_toBottomOf="@+id/statusSecond"
+    app:srcCompat="@android:drawable/status_bar_item_app_background"
+    tools:layout_editor_absoluteX="44dp" />
+
+  <TextView
+    android:id="@+id/oneLevelText2"
+    android:layout_width="196dp"
+    android:layout_height="23dp"
+    android:text="המסמכים ממתינים לבדיקה"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    tools:layout_editor_absoluteX="182dp"
+    tools:layout_editor_absoluteY="267dp" />
+
+  <TextView
+    android:id="@+id/oneLevelText3"
+    android:layout_width="170dp"
+    android:layout_height="23dp"
+    android:layout_marginStart="41dp"
+    android:text="המסמכים בשלב ניתוח"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/imgDocPlaced"
+    tools:layout_editor_absoluteY="403dp" />
+
+  <TextView
+    android:id="@+id/oneLevelText5"
+    android:layout_width="130dp"
+    android:layout_height="23dp"
+    android:layout_marginStart="56dp"
+    android:text="הדרכון בדרך אליך"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/imgDocPlaced3"
+    tools:layout_editor_absoluteY="646dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
