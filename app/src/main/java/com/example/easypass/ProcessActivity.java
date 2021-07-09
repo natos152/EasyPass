@@ -210,12 +210,12 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
 
 
         try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            startActivity(Intent.createChooser(emailIntent, "שולח מייל..."));
             finish();
-            Log.i("Finished sending email...", "");
+            Log.i("מסיים לשלוח את המייל...", "");
         } catch (ActivityNotFoundException ex) {
             Toast.makeText(ProcessActivity.this,
-                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                    "אימייל לא תקין...", Toast.LENGTH_SHORT).show();
         }
     }
 
