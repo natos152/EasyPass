@@ -3,6 +3,7 @@ package com.example.easypass;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -41,6 +42,7 @@ public class StatusRequestActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         myRef = database.getReference("Users").child(mAuth.getUid());
         st1 = findViewById(R.id.title);
+        show_case_number = findViewById(R.id.case_num);
 
     }
     private void readFromDB() {
@@ -63,6 +65,20 @@ public class StatusRequestActivity extends AppCompatActivity {
     private void CheckStatus(String status){
         switch (status){
             case "1":
+                (findViewById(R.id.statusFirst)).setBackgroundResource(R.drawable.shape_status_current);
+                (findViewById(R.id.statusSecond)).setBackgroundResource(R.drawable.shape_status_remaining);
+                (findViewById(R.id.statusSecond2)).setBackgroundResource(R.drawable.shape_status_remaining);
+                (findViewById(R.id.statusSecond3)).setBackgroundResource(R.drawable.shape_status_remaining);
+                (findViewById(R.id.statusSecond4)).setBackgroundResource(R.drawable.shape_status_remaining);
+                (findViewById(R.id.line)).setBackgroundColor(Color.GREEN);
+                break;
+            case "2":
+                (findViewById(R.id.statusFirst)).setBackgroundResource(R.drawable.shape_status_completed);
+                (findViewById(R.id.statusSecond)).setBackgroundResource(R.drawable.shape_status_current);
+                (findViewById(R.id.statusSecond2)).setBackgroundResource(R.drawable.shape_status_remaining);
+                (findViewById(R.id.statusSecond3)).setBackgroundResource(R.drawable.shape_status_remaining);
+                (findViewById(R.id.statusSecond4)).setBackgroundResource(R.drawable.shape_status_remaining);
+                break;
         }
     }
 }

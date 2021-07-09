@@ -180,7 +180,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                 String case_number = UUID.randomUUID().toString();
                 case_number.substring(0, 10);
                 myRef.child("Case number").setValue(case_number);
-                myRef.child("Status Request").setValue(1);
+                myRef.child("Status Request").setValue("1");
                 startActivity(new Intent(ProcessActivity.this, StatusRequestActivity.class));
                 sendEmail();
 //                }

@@ -50,8 +50,8 @@ public class ContactUs extends AppCompatActivity {
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
 
-        String subject = Subject.toString();
-        String content = Content.toString();
+        String subject = Subject.getText().toString();
+        String content = Content.getText().toString();
 
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
@@ -70,11 +70,12 @@ public class ContactUs extends AppCompatActivity {
     }
 
 
-    public void onClick(View view) {
-        sendEmail();
-        ProgressDialog progressDialog = new ProgressDialog(this);
+    public void onClick(View view) throws InterruptedException {
+        ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
         progressDialog.setMessage("ההודעה נשלחה...");
         progressDialog.show();
+        sendEmail();
+        Thread.sleep(3000);
         progressDialog.dismiss();
         startActivity(new Intent(ContactUs.this, StatusRequestActivity.class));
     }
