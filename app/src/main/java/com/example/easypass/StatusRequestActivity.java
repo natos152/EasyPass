@@ -71,6 +71,8 @@ public class StatusRequestActivity extends AppCompatActivity {
                 (findViewById(R.id.statusSecond3)).setBackgroundResource(R.drawable.shape_status_remaining);
                 (findViewById(R.id.statusSecond4)).setBackgroundResource(R.drawable.shape_status_remaining);
                 (findViewById(R.id.line)).setBackgroundColor(Color.GREEN);
+                (findViewById(R.id.line2)).setBackgroundColor(Color.GREEN);
+
                 break;
             case "2":
                 (findViewById(R.id.statusFirst)).setBackgroundResource(R.drawable.shape_status_completed);
