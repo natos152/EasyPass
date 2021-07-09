@@ -7,6 +7,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -60,23 +61,24 @@ public class ContactUs extends AppCompatActivity {
 
 
         try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            startActivity(Intent.createChooser(emailIntent, "שולח מייל..."));
             finish();
-            Log.i("Finished sending email...", "");
+            Log.i("מסיים לשלוח את המייל...", "");
         } catch (ActivityNotFoundException ex) {
             Toast.makeText(ContactUs.this,
-                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                    "אימייל לא תקין...", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     public void onClick(View view) throws InterruptedException {
-        ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
-        progressDialog.setMessage("ההודעה נשלחה...");
-        progressDialog.show();
         sendEmail();
-        Thread.sleep(3000);
-        progressDialog.dismiss();
-        startActivity(new Intent(ContactUs.this, StatusRequestActivity.class));
+        Toast.makeText(ContactUs.this, "ההודעה נשלחה בהצלחה", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(ContactUs.this, StatusRequestActivity.class));
+            }
+        }, 3000);
     }
 }
