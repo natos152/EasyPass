@@ -22,7 +22,7 @@ import java.util.Arrays;
 public class ContactUs extends AppCompatActivity {
     private static final String TAG = "ContactUs";
     EditText Subject, Content;
-    Button btnSend;
+    Button btnSend;//nk
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;

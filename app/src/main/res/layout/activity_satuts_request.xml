@@ -7,15 +7,38 @@
   tools:context=".StatusRequestActivity">
 
   <TextView
-    android:id="@+id/case_num"
-    android:layout_width="335dp"
-    android:layout_height="38dp"
-    android:textSize="20sp"
-    android:textStyle="bold"
-    android:visibility="visible"
-    tools:layout_editor_absoluteX="43dp"
-    tools:layout_editor_absoluteY="54dp"
-    tools:visibility="visible" />
+      android:id="@+id/case_num"
+      android:layout_width="335dp"
+      android:layout_height="38dp"
+      android:textSize="20sp"
+      android:textStyle="bold"
+      android:visibility="visible"
+      tools:layout_editor_absoluteX="30dp"
+      tools:layout_editor_absoluteY="81dp"
+      tools:visibility="visible" />
+
+  <View
+      android:layout_width="2dp"
+      android:layout_height="0dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="#757575"
+      app:layout_constraintBottom_toTopOf="@id/statusSecond4"
+      app:layout_constraintEnd_toEndOf="@+id/statusSecond3"
+      app:layout_constraintStart_toStartOf="@+id/statusSecond3"
+      app:layout_constraintTop_toBottomOf="@+id/statusSecond3"
+    />
+
+  <View
+      android:layout_width="2dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="4dp"
+      android:layout_marginBottom="4dp"
+      android:background="#757575"
+      app:layout_constraintBottom_toTopOf="@id/statusSecond3"
+      app:layout_constraintEnd_toEndOf="@+id/statusSecond2"
+      app:layout_constraintStart_toStartOf="@+id/statusSecond2"
+      app:layout_constraintTop_toBottomOf="@+id/statusSecond2" />
 
   <TextView
     android:id="@+id/title"
@@ -25,160 +48,226 @@
     tools:layout_editor_absoluteX="157dp"
     tools:layout_editor_absoluteY="28dp" />
 
-  <TextView
-    android:id="@+id/oneLevelText"
-    android:layout_width="182dp"
-    android:layout_height="23dp"
-    android:text="המסמכים הועלו למערכת"
-    android:textColor="@color/black"
-    android:textSize="16sp"
-    android:textStyle="bold"
-    tools:layout_editor_absoluteX="193dp"
-    tools:layout_editor_absoluteY="134dp" />
+  <View
+      android:layout_width="2dp"
+      android:layout_height="0dp"
+    android:background="#757575"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    app:layout_constraintBottom_toTopOf="@+id/statusSecond"
+    app:layout_constraintEnd_toEndOf="@+id/statusFirst"
+    app:layout_constraintStart_toStartOf="@+id/statusFirst"
+    app:layout_constraintTop_toBottomOf="@+id/statusFirst"
 
+
+  <TextView
+      android:id="@+id/oneLevelText"
+      android:layout_width="182dp"
+      android:layout_height="23dp"
+      android:text="המסמכים הועלו למערכת"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toTopOf="@id/viewPlacedSupporter"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/ImgDocPlaced2"
+       />
 
   <View
-    android:id="@+id/statusSecond3"
-    android:layout_width="20dp"
-    android:layout_height="20dp"
-    android:background="@drawable/shape_status_remaining"
-    tools:layout_editor_absoluteX="37dp"
-    tools:layout_editor_absoluteY="543dp" />
+    android:id="@+id/viewDivider"
+      android:layout_width="match_parent"
+      android:layout_height="2dp"
+      android:layout_marginTop="30dp"
+      app:layout_constraintTop_toBottomOf="@+id/case_num"/>
 
-  <ImageView
-    android:id="@+id/line4"
-    android:layout_width="4dp"
-    android:layout_height="90dp"
-    android:background="#757575"
-    app:srcCompat="@android:drawable/status_bar_item_app_background"
-    tools:layout_editor_absoluteX="44dp"
-    tools:layout_editor_absoluteY="563dp" />
+  <View
+      android:id="@+id/statusSecond3"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+
+      android:background="@drawable/shape_status_remaining"
+      app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced2"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@id/imgDocPlaced2"
+      android:layout_marginStart="30dp"/>
 
   <View
     android:id="@+id/statusSecond4"
     android:layout_width="20dp"
     android:layout_height="20dp"
     android:background="@drawable/shape_status_remaining"
-    tools:layout_editor_absoluteX="37dp"
-    tools:layout_editor_absoluteY="653dp" />
-
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced3"
+      app:layout_constraintTop_toTopOf="@+id/imgDocPlaced3"
+      android:layout_marginStart="30dp"
+     />
 
   <View
-    android:id="@+id/statusFirst"
-    android:layout_width="20dp"
-    android:layout_height="20dp"
-    android:background="@drawable/shape_status_completed"
-    tools:layout_editor_absoluteX="37dp"
-    tools:layout_editor_absoluteY="132dp" />
+      android:layout_width="1dp"
+      android:layout_height="1dp"
+    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced3"
+      app:layout_constraintEnd_toEndOf="@+id/imgDocPlaced3"
+      app:layout_constraintStart_toStartOf="@+id/imgDocPlaced3"
+      app:layout_constraintTop_toTopOf="@+id/imgDocPlaced3"
+    />
+  <View
+      android:id="@+id/statusFirst"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:background="@drawable/shape_status_completed"
+      android:layout_marginStart="30dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced2"
+      app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced2"
+
+     />
 
   <ImageView
-    android:id="@+id/ImgDocPlaced"
-    android:layout_width="63dp"
-    android:layout_height="71dp"
-    android:src="@drawable/one"
-    tools:layout_editor_absoluteX="94dp"
-    tools:layout_editor_absoluteY="111dp" />
+      android:id="@+id/ImgDocPlaced"
+      android:layout_width="63dp"
+      android:layout_height="71dp"
+      android:layout_marginStart="60dp"
+      android:layout_marginTop="12dp"
+      android:src="@drawable/one"
+      app:layout_constraintTop_toBottomOf="@+id/ImgDocPlaced2"
+      app:layout_constraintStart_toEndOf="@+id/statusSecond"
+      android:layout_MarginStart="20dp"
+      android:layout_MarginTop="40dp"
 
-  <ImageView
-    android:id="@+id/line"
-    android:layout_width="4dp"
-    android:layout_height="115dp"
-    android:background="#757575"
-    app:srcCompat="@android:drawable/status_bar_item_app_background"
-    tools:layout_editor_absoluteX="44dp"
-    tools:layout_editor_absoluteY="152dp" />
+      />
+  <View
+    android:id="@+id/ViewImgDocPlacedSupporter"
+      android:layout_width="1dp"
+      android:layout_height="1dp"
+      app:layout_constraintStart_toStartOf="@+id/ImgDocPlaced"
+      app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced"
+      app:layout_constraintEnd_toEndOf="@+id/ImgDocPlaced"
+      app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced"
+    />
 
   <View
     android:id="@+id/statusSecond2"
     android:layout_width="20dp"
     android:layout_height="20dp"
+      android:layout_marginStart="30dp"
     android:background="@drawable/shape_status_remaining"
-    tools:layout_editor_absoluteX="37dp"
-    tools:layout_editor_absoluteY="406dp" />
+    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/imgDocPlaced"
+      />
+  <View
+    android:id="@+id/lev3suporter"
+      android:layout_width="1dp"
+      android:layout_height="1dp"
+    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced"
+    app:layout_constraintEnd_toEndOf="@+id/imgDocPlaced"
+    app:layout_constraintStart_toStartOf="@+id/imgDocPlaced"
+    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced"
+
 
   <ImageView
-    android:id="@+id/line3"
-    android:layout_width="4dp"
-    android:layout_height="115dp"
-    android:background="#757575"
-    app:srcCompat="@android:drawable/status_bar_item_app_background"
-    tools:layout_editor_absoluteX="44dp"
-    tools:layout_editor_absoluteY="426dp" />
+      android:id="@+id/imgDocPlaced2"
+      android:layout_width="63dp"
+      android:layout_height="71dp"
+      android:layout_marginStart="64dp"
+      android:layout_marginTop="28dp"
+      android:contentDescription="@string/app_name"
+      android:src="@drawable/tree"
+      app:layout_constraintStart_toEndOf="@id/statusSecond3"
+      app:layout_constraintTop_toBottomOf="@+id/imgDocPlaced" />
+
+  <View
+    android:id="@+id/lev4suporter"
+      android:layout_width="1dp"
+      android:layout_height="1dp"
+    app:layout_constraintStart_toStartOf="@+id/imgDocPlaced2"
+    app:layout_constraintEnd_toEndOf="@+id/imgDocPlaced2"
+    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced2"
+    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced2"/>
+
 
   <ImageView
-    android:id="@+id/imgDocPlaced2"
-    android:layout_width="63dp"
-    android:layout_height="71dp"
-    android:contentDescription="@string/app_name"
-    android:src="@drawable/tree"
-    tools:layout_editor_absoluteX="98dp"
-    tools:layout_editor_absoluteY="492dp" />
-
-  <ImageView
-    android:id="@+id/imgDocPlaced"
-    android:layout_width="63dp"
-    android:layout_height="71dp"
-    android:contentDescription="@string/app_name"
-    android:src="@drawable/four"
-    tools:layout_editor_absoluteX="98dp"
-    tools:layout_editor_absoluteY="379dp" />
+      android:id="@+id/imgDocPlaced"
+      android:layout_width="70dp"
+      android:layout_height="71dp"
+      android:layout_marginStart="60dp"
+      android:layout_marginTop="28dp"
+      android:contentDescription="@string/app_name"
+      android:src="@drawable/four"
+      app:layout_constraintStart_toEndOf="@+id/statusSecond2"
+      app:layout_constraintTop_toBottomOf="@+id/ImgDocPlaced" />
 
   <TextView
     android:id="@+id/oneLevelText4"
-    android:layout_width="170dp"
+    android:layout_width="180dp"
     android:layout_height="23dp"
     android:text="הדרכון בתהליך הנפקה"
     android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold"
-    tools:layout_editor_absoluteX="202dp"
-    tools:layout_editor_absoluteY="520dp" />
+      app:layout_constraintBottom_toTopOf="@+id/statusSecond3"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imgDocPlaced2"
+     />
 
   <ImageView
-    android:id="@+id/imgDocPlaced3"
-    android:layout_width="63dp"
-    android:layout_height="71dp"
-    android:contentDescription="@string/app_name"
-    android:src="@drawable/five"
-    tools:layout_editor_absoluteX="101dp"
-    tools:layout_editor_absoluteY="614dp" />
+      android:id="@+id/imgDocPlaced3"
+      android:layout_width="63dp"
+      android:layout_height="71dp"
+      android:layout_marginStart="64dp"
+      android:layout_marginTop="32dp"
+      android:contentDescription="@string/app_name"
+      android:src="@drawable/five"
+      app:layout_constraintStart_toEndOf="@+id/statusSecond4"
+      app:layout_constraintTop_toBottomOf="@+id/imgDocPlaced2" />
 
   <ImageView
-    android:id="@+id/ImgDocPlaced2"
-    android:layout_width="63dp"
-    android:layout_height="71dp"
-    android:contentDescription="@string/app_name"
-    android:src="@drawable/two"
-    tools:layout_editor_absoluteX="88dp"
-    tools:layout_editor_absoluteY="250dp" />
+      android:id="@+id/ImgDocPlaced2"
+      android:layout_width="63dp"
+      android:layout_height="71dp"
+      android:layout_marginStart="60dp"
+      android:layout_marginTop="44dp"
+      android:contentDescription="@string/app_name"
+      android:src="@drawable/two"
+      app:layout_constraintStart_toEndOf="@+id/statusFirst"
+      app:layout_constraintTop_toBottomOf="@id/viewDivider" />
 
   <View
-    android:id="@+id/statusSecond"
-    android:layout_width="20dp"
-    android:layout_height="20dp"
-    android:background="@drawable/shape_status_current"
-    tools:layout_editor_absoluteX="37dp"
-    tools:layout_editor_absoluteY="267dp" />
+    android:id="@+id/viewPlacedSupporter"
+      android:layout_width="1dp"
+      android:layout_height="1dp"
+    app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced2"
+    app:layout_constraintEnd_toEndOf="@+id/ImgDocPlaced2"
+    app:layout_constraintStart_toStartOf="@+id/ImgDocPlaced2"
+    app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced2"/>
 
-  <ImageView
-    android:id="@+id/line2"
-    android:layout_width="4dp"
-    android:layout_height="115dp"
-    android:background="#757575"
-    app:srcCompat="@android:drawable/status_bar_item_app_background"
-    tools:layout_editor_absoluteX="44dp"
-    tools:layout_editor_absoluteY="288dp" />
+
+  <View
+      android:id="@+id/statusSecond"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:background="@drawable/shape_status_current"
+      app:layout_constraintStart_toStartOf="parent"
+      android:layout_marginStart="30dp"
+      app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced"
+      app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced"
+       />
 
   <TextView
-    android:id="@+id/oneLevelText2"
-    android:layout_width="196dp"
-    android:layout_height="23dp"
-    android:text="המסמכים ממתינים לבדיקה"
-    android:textColor="@color/black"
-    android:textSize="16sp"
-    android:textStyle="bold"
-    tools:layout_editor_absoluteX="182dp"
-    tools:layout_editor_absoluteY="267dp" />
+      android:id="@+id/oneLevelText2"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="המסמכים ממתינים לבדיקה"
+      android:textColor="@color/black"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="10dp"
+      android:textSize="16sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toTopOf="@id/ViewImgDocPlacedSupporter"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/ImgDocPlaced"
+
+      />
 
   <TextView
     android:id="@+id/oneLevelText3"
@@ -188,8 +277,23 @@
     android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold"
-    tools:layout_editor_absoluteX="202dp"
-    tools:layout_editor_absoluteY="403dp" />
+    app:layout_constraintStart_toEndOf="@+id/imgDocPlaced"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="10dp"
+      app:layout_constraintBottom_toTopOf="@+id/lev3suporter"
+     />
+  <View
+      android:id="@+id/lev5suporter"
+      android:layout_width="2dp"
+      android:layout_height="0dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="#757575"
+    app:layout_constraintBottom_toTopOf="@+id/statusSecond2"
+    app:layout_constraintEnd_toEndOf="@+id/statusSecond"
+    app:layout_constraintStart_toStartOf="@+id/statusSecond"
+    app:layout_constraintTop_toBottomOf="@+id/statusSecond"/>
 
   <TextView
     android:id="@+id/oneLevelText5"
@@ -199,7 +303,11 @@
     android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold"
-    tools:layout_editor_absoluteX="220dp"
-    tools:layout_editor_absoluteY="646dp" />
+      app:layout_constraintBottom_toTopOf="@+id/statusSecond4"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/imgDocPlaced3"
+
+
+     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
