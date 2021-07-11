@@ -148,34 +148,34 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_ContactUs:
                 startActivity(new Intent(ProcessActivity.this, ContactUs.class));
                 break;
-//            case R.id.btn_upload_pass:
-//                imageName = "passport";
-//                takeImage();
-//                break;
-//            case R.id.btn_upload_ID:
-//                imageName = "id";
-//                takeImage();
-//                break;
-//            case R.id.btn_upload_birthdate:
-//                imageName = "birthdate";
-//                takeImage();
-//                break;
-//            case R.id.btn_upload_police_crteif:
-//                imageName = "police";
-//                takeImage();
-//                break;
-//            case R.id.btn_upload_family_tree:
-//                fileName = "family";
-//                uploadFile();
-//                break;
+            case R.id.btn_upload_pass:
+                imageName = "passport";
+                takeImage();
+                break;
+            case R.id.btn_upload_ID:
+                imageName = "id";
+                takeImage();
+                break;
+            case R.id.btn_upload_birthdate:
+                imageName = "birthdate";
+                takeImage();
+                break;
+            case R.id.btn_upload_police_crteif:
+                imageName = "police";
+                takeImage();
+                break;
+            case R.id.btn_upload_family_tree:
+                fileName = "family";
+                uploadFile();
+                break;
             case R.id.downloadBtn:
-//                if (PolicePic.getDrawable() == null || BirthdatePic.getDrawable() == null || IdPic.getDrawable() == null || PassPortPic.getDrawable() == null) {
-//                    Toast.makeText(getApplicationContext(), "אנא העלאה את כל המסמכים !", Toast.LENGTH_SHORT).show();
-//                    return;
-//                } else if (findViewById((R.id.tree_view)).getVisibility() == View.GONE) {
-//                    Toast.makeText(getApplicationContext(), "אנא העלאה קובץ עץ משפחה !", Toast.LENGTH_SHORT).show();
-//                    return;
-//                } else {
+                if (PolicePic.getDrawable() == null || BirthdatePic.getDrawable() == null || IdPic.getDrawable() == null || PassPortPic.getDrawable() == null) {
+                    Toast.makeText(getApplicationContext(), "אנא העלאה את כל המסמכים !", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (findViewById((R.id.tree_view)).getVisibility() == View.GONE) {
+                    Toast.makeText(getApplicationContext(), "אנא העלאה קובץ עץ משפחה !", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
                 Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
                 String case_number = UUID.randomUUID().toString();
                 case_number.substring(0, 10);
@@ -183,7 +183,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                 myRef.child("Status Request").setValue("1");
                 startActivity(new Intent(ProcessActivity.this, StatusRequestActivity.class));
                 sendEmail();
-//                }
+                }
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
@@ -241,13 +241,13 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-//    private void uploadFile() {
-//        Intent galleryIntent = new Intent();
-//        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-//        // We will be redirected to choose pdf
-//        galleryIntent.setType("application/pdf");
-//        startActivityForResult(galleryIntent, 1);
-//    }
+    private void uploadFile() {
+        Intent galleryIntent = new Intent();
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        // We will be redirected to choose pdf
+        galleryIntent.setType("application/pdf");
+        startActivityForResult(galleryIntent, 1);
+    }
 
 
     private void uploadToFirestorage(Uri uri) {

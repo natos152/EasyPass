@@ -25,10 +25,9 @@ public class StatusRequestActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference myRef;
     StorageReference storageReference;
-    String number_status = null;
+    String number_status = null, status=null;
     TextView st1, show_case_number;
-    View upload_files, wait_to_check, analyze_files, create_passport, shipping;
-    ImageView line_one, line_two, line_tree, line_four, line_five;
+    View upload_files, wait_to_check, analyze_files, create_passport, shipping,line_one, line_two, line_tree, line_four;
     Button contact_us;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +54,11 @@ public class StatusRequestActivity extends AppCompatActivity {
         analyze_files = findViewById(R.id.statusSecond2);
         create_passport = findViewById(R.id.statusSecond3);
         shipping = findViewById(R.id.statusSecond4);
+
         line_one = findViewById(R.id.line);
-        line_two = findViewById(R.id.line1);
-        line_tree = findViewById(R.id.line2);
-        line_four = findViewById(R.id.line3);
-        line_five = findViewById(R.id.line4);
+        line_two = findViewById(R.id.line2);
+        line_tree = findViewById(R.id.line3);
+        line_four = findViewById(R.id.line4);
     }
 
     private void readFromDB() {
@@ -68,7 +67,8 @@ public class StatusRequestActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 number_status = snapshot.child("Case number").getValue(String.class);
                 show_case_number.setText("תיק מספר :  " + number_status);
-                CheckStatus(number_status);
+                status = snapshot.child("Status Request").getValue(String.class);
+                CheckStatus(status);
             }
 
             @Override
@@ -83,8 +83,8 @@ public class StatusRequestActivity extends AppCompatActivity {
         switch (status) {
             case "1":
                 line_one.setBackgroundColor(Color.GREEN);
-                upload_files.setBackgroundResource(R.drawable.shape_status_current);
-                wait_to_check.setBackgroundResource(R.drawable.shape_status_remaining);
+                upload_files.setBackgroundResource(R.drawable.shape_status_completed);
+                wait_to_check.setBackgroundResource(R.drawable.shape_status_current);
                 analyze_files.setBackgroundResource(R.drawable.shape_status_remaining);
                 create_passport.setBackgroundResource(R.drawable.shape_status_remaining);
                 shipping.setBackgroundResource(R.drawable.shape_status_remaining);

@@ -6,196 +6,211 @@
   android:layout_height="match_parent"
   tools:context=".StatusRequestActivity">
 
+  <Button
+    android:id="@+id/btn_ContactUs2"
+    android:layout_width="119dp"
+    android:layout_height="41dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginEnd="164dp"
+    android:onClick="onClick"
+    android:text="יצירת קשר"
+    app:layout_constraintEnd_toStartOf="@+id/title"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:layout_editor_absoluteY="54dp" />
+
   <TextView
-      android:id="@+id/case_num"
-      android:layout_width="335dp"
-      android:layout_height="38dp"
-      android:textSize="20sp"
-      android:textStyle="bold"
-      android:visibility="visible"
-      tools:layout_editor_absoluteX="30dp"
-      tools:layout_editor_absoluteY="81dp"
-      tools:visibility="visible" />
+    android:id="@+id/case_num"
+    android:layout_width="245dp"
+    android:layout_height="38dp"
+    android:layout_marginStart="83dp"
+    android:layout_marginTop="112dp"
+    android:layout_marginEnd="83dp"
+    android:layout_marginBottom="581dp"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:visibility="visible"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
   <View
-      android:layout_width="2dp"
-      android:layout_height="0dp"
+    android:id="@+id/line4"
+    android:layout_width="2dp"
+    android:layout_height="0dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     android:background="#757575"
-      app:layout_constraintBottom_toTopOf="@id/statusSecond4"
-      app:layout_constraintEnd_toEndOf="@+id/statusSecond3"
-      app:layout_constraintStart_toStartOf="@+id/statusSecond3"
-      app:layout_constraintTop_toBottomOf="@+id/statusSecond3"
-    />
+    app:layout_constraintBottom_toTopOf="@id/statusSecond4"
+    app:layout_constraintEnd_toEndOf="@+id/statusSecond3"
+    app:layout_constraintStart_toStartOf="@+id/statusSecond3"
+    app:layout_constraintTop_toBottomOf="@+id/statusSecond3" />
 
   <View
-      android:layout_width="2dp"
-      android:layout_height="0dp"
-      android:layout_marginTop="4dp"
-      android:layout_marginBottom="4dp"
-      android:background="#757575"
-      app:layout_constraintBottom_toTopOf="@id/statusSecond3"
-      app:layout_constraintEnd_toEndOf="@+id/statusSecond2"
-      app:layout_constraintStart_toStartOf="@+id/statusSecond2"
-      app:layout_constraintTop_toBottomOf="@+id/statusSecond2" />
+    android:id="@+id/line3"
+    android:layout_width="2dp"
+    android:layout_height="0dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="#757575"
+    app:layout_constraintBottom_toTopOf="@id/statusSecond3"
+    app:layout_constraintEnd_toEndOf="@+id/statusSecond2"
+    app:layout_constraintStart_toStartOf="@+id/statusSecond2"
+    app:layout_constraintTop_toBottomOf="@+id/statusSecond2" />
 
   <TextView
     android:id="@+id/title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginStart="302dp"
+    android:layout_marginEnd="30dp"
     android:text="סטטוס בקשה"
-    tools:layout_editor_absoluteX="157dp"
-    tools:layout_editor_absoluteY="28dp" />
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:layout_editor_absoluteY="64dp" />
 
   <View
-      android:layout_width="2dp"
-      android:layout_height="0dp"
-    android:background="#757575"
+    android:id="@+id/line"
+    android:layout_width="2dp"
+    android:layout_height="0dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
+    android:background="#757575"
     app:layout_constraintBottom_toTopOf="@+id/statusSecond"
     app:layout_constraintEnd_toEndOf="@+id/statusFirst"
     app:layout_constraintStart_toStartOf="@+id/statusFirst"
-    app:layout_constraintTop_toBottomOf="@+id/statusFirst"
+    app:layout_constraintTop_toBottomOf="@+id/statusFirst" />
 
 
   <TextView
-      android:id="@+id/oneLevelText"
-      android:layout_width="182dp"
-      android:layout_height="23dp"
-      android:text="המסמכים הועלו למערכת"
-      android:textColor="@color/black"
-      android:textSize="16sp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toTopOf="@id/viewPlacedSupporter"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/ImgDocPlaced2"
-       />
+    android:id="@+id/oneLevelText"
+    android:layout_width="182dp"
+    android:layout_height="23dp"
+    android:text="המסמכים הועלו למערכת"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@id/viewPlacedSupporter"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/ImgDocPlaced2" />
 
   <View
     android:id="@+id/viewDivider"
-      android:layout_width="match_parent"
-      android:layout_height="2dp"
-      android:layout_marginTop="30dp"
-      app:layout_constraintTop_toBottomOf="@+id/case_num"/>
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:layout_marginTop="30dp"
+    app:layout_constraintTop_toBottomOf="@+id/case_num" />
 
   <View
-      android:id="@+id/statusSecond3"
-      android:layout_width="20dp"
-      android:layout_height="20dp"
-
-      android:background="@drawable/shape_status_remaining"
-      app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced2"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@id/imgDocPlaced2"
-      android:layout_marginStart="30dp"/>
+    android:id="@+id/statusSecond3"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="30dp"
+    android:background="@drawable/shape_status_remaining"
+    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@id/imgDocPlaced2" />
 
   <View
     android:id="@+id/statusSecond4"
     android:layout_width="20dp"
     android:layout_height="20dp"
+    android:layout_marginStart="30dp"
     android:background="@drawable/shape_status_remaining"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced3"
-      app:layout_constraintTop_toTopOf="@+id/imgDocPlaced3"
-      android:layout_marginStart="30dp"
-     />
-
-  <View
-      android:layout_width="1dp"
-      android:layout_height="1dp"
     app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced3"
-      app:layout_constraintEnd_toEndOf="@+id/imgDocPlaced3"
-      app:layout_constraintStart_toStartOf="@+id/imgDocPlaced3"
-      app:layout_constraintTop_toTopOf="@+id/imgDocPlaced3"
-    />
-  <View
-      android:id="@+id/statusFirst"
-      android:layout_width="20dp"
-      android:layout_height="20dp"
-      android:background="@drawable/shape_status_completed"
-      android:layout_marginStart="30dp"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced2"
-      app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced3" />
 
-     />
+  <View
+    android:id="@+id/view2"
+    android:layout_width="1dp"
+    android:layout_height="1dp"
+    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced3"
+    app:layout_constraintEnd_toEndOf="@+id/imgDocPlaced3"
+    app:layout_constraintStart_toStartOf="@+id/imgDocPlaced3"
+    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced3" />
+
+  <View
+    android:id="@+id/statusFirst"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="30dp"
+    android:background="@drawable/shape_status_completed"
+    app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced2" />
 
   <ImageView
-      android:id="@+id/ImgDocPlaced"
-      android:layout_width="63dp"
-      android:layout_height="71dp"
-      android:layout_marginStart="60dp"
-      android:layout_marginTop="12dp"
-      android:src="@drawable/one"
-      app:layout_constraintTop_toBottomOf="@+id/ImgDocPlaced2"
-      app:layout_constraintStart_toEndOf="@+id/statusSecond"
-      android:layout_MarginStart="20dp"
-      android:layout_MarginTop="40dp"
+    android:id="@+id/ImgDocPlaced"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
 
-      />
+    android:layout_marginStart="60dp"
+    android:layout_marginTop="12dp"
+    android:src="@drawable/one"
+    app:layout_constraintStart_toEndOf="@+id/statusSecond"
+    app:layout_constraintTop_toBottomOf="@+id/ImgDocPlaced2" />
+
   <View
     android:id="@+id/ViewImgDocPlacedSupporter"
-      android:layout_width="1dp"
-      android:layout_height="1dp"
-      app:layout_constraintStart_toStartOf="@+id/ImgDocPlaced"
-      app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced"
-      app:layout_constraintEnd_toEndOf="@+id/ImgDocPlaced"
-      app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced"
-    />
+    android:layout_width="1dp"
+    android:layout_height="1dp"
+    app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced"
+    app:layout_constraintEnd_toEndOf="@+id/ImgDocPlaced"
+    app:layout_constraintStart_toStartOf="@+id/ImgDocPlaced"
+    app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced" />
 
   <View
     android:id="@+id/statusSecond2"
     android:layout_width="20dp"
     android:layout_height="20dp"
-      android:layout_marginStart="30dp"
+    android:layout_marginStart="30dp"
     android:background="@drawable/shape_status_remaining"
     app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/imgDocPlaced"
-      />
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced" />
+
   <View
     android:id="@+id/lev3suporter"
-      android:layout_width="1dp"
-      android:layout_height="1dp"
+    android:layout_width="1dp"
+    android:layout_height="1dp"
     app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced"
     app:layout_constraintEnd_toEndOf="@+id/imgDocPlaced"
     app:layout_constraintStart_toStartOf="@+id/imgDocPlaced"
-    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced"
+    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced" />
 
 
   <ImageView
-      android:id="@+id/imgDocPlaced2"
-      android:layout_width="63dp"
-      android:layout_height="71dp"
-      android:layout_marginStart="64dp"
-      android:layout_marginTop="28dp"
-      android:contentDescription="@string/app_name"
-      android:src="@drawable/tree"
-      app:layout_constraintStart_toEndOf="@id/statusSecond3"
-      app:layout_constraintTop_toBottomOf="@+id/imgDocPlaced" />
+    android:id="@+id/imgDocPlaced2"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="64dp"
+    android:layout_marginTop="28dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/tree"
+    app:layout_constraintStart_toEndOf="@id/statusSecond3"
+    app:layout_constraintTop_toBottomOf="@+id/imgDocPlaced" />
 
   <View
     android:id="@+id/lev4suporter"
-      android:layout_width="1dp"
-      android:layout_height="1dp"
-    app:layout_constraintStart_toStartOf="@+id/imgDocPlaced2"
+    android:layout_width="1dp"
+    android:layout_height="1dp"
+    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced2"
     app:layout_constraintEnd_toEndOf="@+id/imgDocPlaced2"
-    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced2"
-    app:layout_constraintBottom_toBottomOf="@+id/imgDocPlaced2"/>
+    app:layout_constraintStart_toStartOf="@+id/imgDocPlaced2"
+    app:layout_constraintTop_toTopOf="@+id/imgDocPlaced2" />
 
 
   <ImageView
-      android:id="@+id/imgDocPlaced"
-      android:layout_width="70dp"
-      android:layout_height="71dp"
-      android:layout_marginStart="60dp"
-      android:layout_marginTop="28dp"
-      android:contentDescription="@string/app_name"
-      android:src="@drawable/four"
-      app:layout_constraintStart_toEndOf="@+id/statusSecond2"
-      app:layout_constraintTop_toBottomOf="@+id/ImgDocPlaced" />
+    android:id="@+id/imgDocPlaced"
+    android:layout_width="70dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="60dp"
+    android:layout_marginTop="28dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/four"
+    app:layout_constraintStart_toEndOf="@+id/statusSecond2"
+    app:layout_constraintTop_toBottomOf="@+id/ImgDocPlaced" />
 
   <TextView
     android:id="@+id/oneLevelText4"
@@ -205,95 +220,91 @@
     android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold"
-      app:layout_constraintBottom_toTopOf="@+id/statusSecond3"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/imgDocPlaced2"
-     />
+    app:layout_constraintBottom_toTopOf="@+id/statusSecond3"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/imgDocPlaced2" />
 
   <ImageView
-      android:id="@+id/imgDocPlaced3"
-      android:layout_width="63dp"
-      android:layout_height="71dp"
-      android:layout_marginStart="64dp"
-      android:layout_marginTop="32dp"
-      android:contentDescription="@string/app_name"
-      android:src="@drawable/five"
-      app:layout_constraintStart_toEndOf="@+id/statusSecond4"
-      app:layout_constraintTop_toBottomOf="@+id/imgDocPlaced2" />
+    android:id="@+id/imgDocPlaced3"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="64dp"
+    android:layout_marginTop="32dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/five"
+    app:layout_constraintStart_toEndOf="@+id/statusSecond4"
+    app:layout_constraintTop_toBottomOf="@+id/imgDocPlaced2" />
 
   <ImageView
-      android:id="@+id/ImgDocPlaced2"
-      android:layout_width="63dp"
-      android:layout_height="71dp"
-      android:layout_marginStart="60dp"
-      android:layout_marginTop="44dp"
-      android:contentDescription="@string/app_name"
-      android:src="@drawable/two"
-      app:layout_constraintStart_toEndOf="@+id/statusFirst"
-      app:layout_constraintTop_toBottomOf="@id/viewDivider" />
+    android:id="@+id/ImgDocPlaced2"
+    android:layout_width="63dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="60dp"
+    android:layout_marginTop="44dp"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/two"
+    app:layout_constraintStart_toEndOf="@+id/statusFirst"
+    app:layout_constraintTop_toBottomOf="@id/viewDivider" />
 
   <View
     android:id="@+id/viewPlacedSupporter"
-      android:layout_width="1dp"
-      android:layout_height="1dp"
+    android:layout_width="1dp"
+    android:layout_height="1dp"
     app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced2"
     app:layout_constraintEnd_toEndOf="@+id/ImgDocPlaced2"
     app:layout_constraintStart_toStartOf="@+id/ImgDocPlaced2"
-    app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced2"/>
+    app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced2" />
 
 
   <View
-      android:id="@+id/statusSecond"
-      android:layout_width="20dp"
-      android:layout_height="20dp"
-      android:background="@drawable/shape_status_current"
-      app:layout_constraintStart_toStartOf="parent"
-      android:layout_marginStart="30dp"
-      app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced"
-      app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced"
-       />
+    android:id="@+id/statusSecond"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="30dp"
+    android:background="@drawable/shape_status_current"
+    app:layout_constraintBottom_toBottomOf="@+id/ImgDocPlaced"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/ImgDocPlaced" />
 
   <TextView
-      android:id="@+id/oneLevelText2"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:text="המסמכים ממתינים לבדיקה"
-      android:textColor="@color/black"
-      android:layout_marginStart="10dp"
-      android:layout_marginEnd="10dp"
-      android:textSize="16sp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toTopOf="@id/ViewImgDocPlacedSupporter"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/ImgDocPlaced"
-
-      />
+    android:id="@+id/oneLevelText2"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:text="המסמכים ממתינים לבדיקה"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@id/ViewImgDocPlacedSupporter"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/ImgDocPlaced" />
 
   <TextView
     android:id="@+id/oneLevelText3"
     android:layout_width="170dp"
     android:layout_height="23dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:text="המסמכים בשלב ניתוח"
     android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold"
-    app:layout_constraintStart_toEndOf="@+id/imgDocPlaced"
-      app:layout_constraintEnd_toEndOf="parent"
-      android:layout_marginStart="10dp"
-      android:layout_marginEnd="10dp"
-      app:layout_constraintBottom_toTopOf="@+id/lev3suporter"
-     />
+    app:layout_constraintBottom_toTopOf="@+id/lev3suporter"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/imgDocPlaced" />
+
   <View
-      android:id="@+id/lev5suporter"
-      android:layout_width="2dp"
-      android:layout_height="0dp"
+    android:id="@+id/line2"
+    android:layout_width="2dp"
+    android:layout_height="0dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     android:background="#757575"
     app:layout_constraintBottom_toTopOf="@+id/statusSecond2"
     app:layout_constraintEnd_toEndOf="@+id/statusSecond"
     app:layout_constraintStart_toStartOf="@+id/statusSecond"
-    app:layout_constraintTop_toBottomOf="@+id/statusSecond"/>
+    app:layout_constraintTop_toBottomOf="@+id/statusSecond" />
 
   <TextView
     android:id="@+id/oneLevelText5"
@@ -303,11 +314,8 @@
     android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold"
-      app:layout_constraintBottom_toTopOf="@+id/statusSecond4"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="@+id/imgDocPlaced3"
-
-
-     />
+    app:layout_constraintBottom_toTopOf="@+id/statusSecond4"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/imgDocPlaced3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

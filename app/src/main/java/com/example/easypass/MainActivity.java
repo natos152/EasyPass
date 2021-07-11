@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "התחברת בהצלחה", Toast.LENGTH_SHORT).show();
                             ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "",
                                     "Loading. Please wait...", true);
-//                            myRef.child(mAuth.getUid()).child("UserInfo").addValueEventListener(new ValueEventListener()
                             myRef.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
@@ -85,13 +84,13 @@ public class MainActivity extends AppCompatActivity {
                                     String passport = snapshot.child("userDocuments").child("Passport").getValue(String.class);
                                     String police = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
                                     dialog.dismiss();
-                                    if (bir != null && fml != null && id != null && passport != null && police != null) {
+//                                    if (bir != null && fml != null && id != null && passport != null && police != null) {
                                         startActivity(new Intent(MainActivity.this, StatusRequestActivity.class));
-                                    } else if (temp != null) {
-                                        startActivity(new Intent(MainActivity.this, ProcessActivity.class));
-                                    } else {
-                                        startActivity(new Intent(MainActivity.this, AdvancedRegisterActivity.class));
-                                    }
+//                                    } else if (temp != null) {
+//                                        startActivity(new Intent(MainActivity.this, ProcessActivity.class));
+//                                    } else {
+//                                        startActivity(new Intent(MainActivity.this, AdvancedRegisterActivity.class));
+//                                    }
                                 }
 
                                 @Override
