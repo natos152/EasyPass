@@ -122,11 +122,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void logoutUser() {
+
+    private void exitApp() {
         new AlertDialog.Builder(MainActivity.this).
-                setTitle("התנתקות").
-                setMessage("אתה בטוח שאתה רוצה להתנתק ?").
-                setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                setTitle("יציאה").
+                setMessage("האם את/ה בטוח/ה שאת/ה רוצה לצאת מהאפליקציה ?").
+                setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAuth.signOut();
@@ -134,12 +135,12 @@ public class MainActivity extends AppCompatActivity {
                         System.exit(0);
                     }
                 })
-                .setNegativeButton(android.R.string.no, null).
+                .setNegativeButton("לא", null).
                 setIcon(android.R.drawable.ic_dialog_info).show();
     }
 
     @Override
     public void onBackPressed() { // התנתקות לאחר שתי לחיצות.
-        logoutUser();
+        exitApp();
     }
 }

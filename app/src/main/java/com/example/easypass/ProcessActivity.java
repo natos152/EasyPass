@@ -75,14 +75,14 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         new AlertDialog.Builder(ProcessActivity.this).
                 setTitle("התנתקות").
                 setMessage("אתה בטוח שאתה רוצה להתנתק ?").
-                setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAuth.signOut();
                         startActivity(new Intent(ProcessActivity.this, MainActivity.class));
                     }
                 })
-                .setNegativeButton("No", null).
+                .setNegativeButton("לא", null).
                 setIcon(android.R.drawable.ic_dialog_info).show();
     }
 
