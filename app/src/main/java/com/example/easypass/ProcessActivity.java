@@ -62,6 +62,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     String firstName = null, lastname = null, birthclient = null, idclient = null, passclient = null, policcerclient = null, fmilyclient = null;
     Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice, URI = null;
     static int counter = 0;
+    public static final int MODE_IN = 1;
 
     @Override
     public void onBackPressed() {
@@ -103,11 +104,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                 firstName = snapshot.child("UserInfo").child("first_name").getValue(String.class);
                 lastname = snapshot.child("UserInfo").child("last_name").getValue(String.class);
                 welcome_mess.setText("ברוך הבא " + firstName + " " + lastname);
-                birthclient = snapshot.child("userDocuments").child("Birthdate").getValue(String.class);
-                idclient = snapshot.child("userDocuments").child("Id").getValue(String.class);
-                passclient = snapshot.child("userDocuments").child("Passport").getValue(String.class);
-                policcerclient = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
-                fmilyclient = snapshot.child("userDocuments").child("FamilyTree").getValue(String.class);
             }
 
             @Override
@@ -176,13 +172,13 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(getApplicationContext(), "אנא העלאה קובץ עץ משפחה !", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
-                String case_number = UUID.randomUUID().toString();
-                case_number.substring(0, 10);
-                myRef.child("Case number").setValue(case_number);
-                myRef.child("Status Request").setValue("1");
-                startActivity(new Intent(ProcessActivity.this, StatusRequestActivity.class));
-                sendEmail();
+                    Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
+                    String case_number = UUID.randomUUID().toString();
+                    case_number = case_number.substring(0, 10);
+                    myRef.child("Case number").setValue(case_number);
+                    myRef.child("Status Request").setValue("1");
+                    startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
+                    sendEmail();
                 }
                 break;
             default:
@@ -191,6 +187,23 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void sendEmail() {
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                birthclient = snapshot.child("userDocuments").child("Birthdate").getValue(String.class);
+                idclient = snapshot.child("userDocuments").child("Id").getValue(String.class);
+                passclient = snapshot.child("userDocuments").child("Passport").getValue(String.class);
+                policcerclient = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
+                fmilyclient = snapshot.child("userDocuments").child("FamilyTree").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         Log.d(TAG, "send email...");
 
         String[] TO = {"epass876@gmail.com"};
@@ -325,8 +338,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         switch (requestCode) {
             case CAPTURE_IMAGE:
                 if (resultCode == RESULT_OK) {
-                    DocumentUser pi = new DocumentUser();
-                    myRef.child(mAuth.getUid()).child("UserDoc").setValue(pi);
                     if (imageName.equals("passport")) {
                         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                         PassPortPic.setImageBitmap(bitmap);
@@ -334,19 +345,19 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                         uploadToFirestorage(uriPassPort);
                     } else if (imageName.equals("id")) {
                         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                        IdPic.setImageBitmap(bitmap);
                         uriId = getImageUri(ProcessActivity.this, bitmap);
                         uploadToFirestorage(uriId);
-                        IdPic.setImageBitmap(bitmap);
                     } else if (imageName.equals("birthdate")) {
                         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                        BirthdatePic.setImageBitmap(bitmap);
                         uriBirthdate = getImageUri(ProcessActivity.this, bitmap);
                         uploadToFirestorage(uriBirthdate);
-                        BirthdatePic.setImageBitmap(bitmap);
                     } else if (imageName.equals("police")) {
                         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                        PolicePic.setImageBitmap(bitmap);
                         uriPolice = getImageUri(ProcessActivity.this, bitmap);
                         uploadToFirestorage(uriPolice);
-                        PolicePic.setImageBitmap(bitmap);
                     } else {
                         Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();
                     }
@@ -361,7 +372,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(ProcessActivity.this, UriTree.toString(), Toast.LENGTH_SHORT).show();
                     final StorageReference filepath = storageReference.child(mAuth.getUid()).child("userDocuments").child(message + "." + getFileExtension(UriTree));
                     UploadToFireBaseFromMediaStorage(UriTree, filepath);
-                    FamilyTreePic.onVisibilityAggregated(true);
+                    FamilyTreePic.setVisibility(View.VISIBLE);
                 }
                 break;
         }
@@ -374,7 +385,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         return Uri.parse(path);
     }
 
-
+    //Recognize file extension
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();

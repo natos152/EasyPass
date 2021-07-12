@@ -23,7 +23,7 @@ import java.util.Arrays;
 public class ContactUs extends AppCompatActivity {
     private static final String TAG = "ContactUs";
     EditText Subject, Content;
-    Button btnSend;//nk
+    Button btnSend;
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -72,13 +72,10 @@ public class ContactUs extends AppCompatActivity {
 
 
     public void onClick(View view) throws InterruptedException {
+        if (Subject.getText().toString().equals("") || Content.getText().toString().equals("")) {
+            Toast.makeText(ContactUs.this, "אנא מלא/י את כל השדות", Toast.LENGTH_SHORT).show();
+            return;
+        }
         sendEmail();
-        Toast.makeText(ContactUs.this, "ההודעה נשלחה בהצלחה", Toast.LENGTH_SHORT).show();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(ContactUs.this, StatusRequestActivity.class));
-            }
-        }, 3000);
     }
 }

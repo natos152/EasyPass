@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
                                     "Loading. Please wait...", true);
                             myRef.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
                                 @Override
-                                public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
-                                    String temp = snapshot.child("UserInfo").child("id").getValue(String.class);
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String userExist = snapshot.child("UserInfo").child("id").getValue(String.class);
                                     String bir = snapshot.child("userDocuments").child("Birthdate").getValue(String.class);
                                     String fml = snapshot.child("userDocuments").child("FamilyTree").getValue(String.class);
                                     String id = snapshot.child("userDocuments").child("Id").getValue(String.class);
@@ -85,12 +85,28 @@ public class MainActivity extends AppCompatActivity {
                                     String police = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
                                     dialog.dismiss();
 //                                    if (bir != null && fml != null && id != null && passport != null && police != null) {
-                                        startActivity(new Intent(MainActivity.this, StatusRequestActivity.class));
-//                                    } else if (temp != null) {
+//                                    startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            //startActivity(new Intent(MainActivity.this, ProcessActivity.class));
+                                            startActivity(new Intent(MainActivity.this, StatusRequestActivity.class));
+                                        }
+                                    }, 2000);
+//                                    } else if (userExist != null) {
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
 //                                        startActivity(new Intent(MainActivity.this, ProcessActivity.class));
+                                        }
+                                    }, 2000);
 //                                    } else {
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
 //                                        startActivity(new Intent(MainActivity.this, AdvancedRegisterActivity.class));
-//                                    }
+                                        }
+                                    }, 2000);//                                    }
                                 }
 
                                 @Override
@@ -115,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             backToast = Toast.makeText(getBaseContext(), "לחץ שוב כדי לצאת", Toast.LENGTH_SHORT);
             backToast.show();
+            finish();
+            System.exit(0);
         }
         backPressedTime = System.currentTimeMillis();
     }

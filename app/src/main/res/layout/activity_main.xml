@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:hint="אימייל"
+        android:hint="הקלד/י אימייל"
         android:textAlignment="center"
         android:textColor="#040404"
         android:textColorHighlight="#040404"
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:hint="סיסמא"
+        android:hint="הקלד/י סיסמא"
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="#040404"
@@ -84,7 +84,7 @@
         android:layout_height="12dp"
         android:layout_weight="1"
         android:backgroundTint="#8BC34A"
-        android:text="התחבר"
+        android:text="התחבר/י"
         android:textAllCaps="false" />
 
       <Space
@@ -100,7 +100,7 @@
         android:layout_weight="1"
         android:background="@drawable/original_icon"
         android:backgroundTint="#8BC34A"
-        android:text="הרשמה"
+        android:text="עוד לא רשום/ה ? לחצ/י כאן"
         android:textAllCaps="false" />
     </LinearLayout>
 

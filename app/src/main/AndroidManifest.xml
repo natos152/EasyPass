@@ -14,7 +14,9 @@
     android:roundIcon="@mipmap/main_new_icon"
     android:supportsRtl="true"
     android:theme="@style/Theme.EasyPass">
-    <activity android:name=".ContactUs"></activity>
+    <activity android:name=".InstructionsActivity"></activity>
+    <activity android:name=".FinishProcess" />
+    <activity android:name=".ContactUs" />
     <activity android:name=".StatusRequestActivity" />
     <activity android:name=".AdvancedRegisterActivity" />
     <activity android:name=".ValidationProcess" />
