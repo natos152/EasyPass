@@ -39,6 +39,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.Date;
@@ -46,23 +48,23 @@ import java.util.UUID;
 
 public class ProcessActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ProcessActivity";
+    private static final int CAPTUE_IMAGE = 1024;
+    private static final int PERMISSION_CAMERA = 888;
+    private static final int PICKFILE_RESULT_CODE = 1;
     TextView welcome_mess;
     Button btnPassport, btnID, btnBirthdate, btnPoliceCertificate, btnFamilyTree, btnDownLoad;
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
     StorageReference storageReference;
-    static final int PERMISSION_CAMERA = 888;
-    static final int CAPTURE_IMAGE = 1024;
-    static final int PICKFILE_RESULT_CODE = 1;
+    Bitmap bitmap;
     ImageView PassPortPic, IdPic, BirthdatePic, PolicePic, FamilyTreePic;
     String imageName = "";
     String fileName = "";
     ProgressDialog dialog;
     String firstName = null, lastname = null, birthclient = null, idclient = null, passclient = null, policcerclient = null, fmilyclient = null;
-    Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice, URI = null;
-    static int counter = 0;
-    public static final int MODE_IN = 1;
+    Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice, uriIamge;
+    int counter = 0;
 
     @Override
     public void onBackPressed() {
@@ -73,14 +75,14 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         new AlertDialog.Builder(ProcessActivity.this).
                 setTitle("התנתקות").
                 setMessage("אתה בטוח שאתה רוצה להתנתק ?").
-                setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAuth.signOut();
                         startActivity(new Intent(ProcessActivity.this, MainActivity.class));
                     }
                 })
-                .setNegativeButton(android.R.string.no, null).
+                .setNegativeButton("No", null).
                 setIcon(android.R.drawable.ic_dialog_info).show();
     }
 
@@ -88,8 +90,10 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_process);
+        mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference().child("userDocuments");
         database = FirebaseDatabase.getInstance("https://easypass-dcff0-default-rtdb.europe-west1.firebasedatabase.app/");
+        myRef = database.getReference("Users").child(mAuth.getUid());
         initViews();
         initButtons();
         readFromDB();
@@ -123,9 +127,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initViews() {
-        mAuth = FirebaseAuth.getInstance();
         welcome_mess = findViewById(R.id.welcome_message);
-        myRef = database.getReference("Users").child(mAuth.getUid());
         btnPassport = findViewById(R.id.btn_upload_pass);
         btnID = findViewById(R.id.btn_upload_ID);
         btnDownLoad = findViewById(R.id.downloadBtn);
@@ -245,12 +247,13 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+
     private void takeImage() {
         if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA}, PERMISSION_CAMERA);
         } else {
             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(i, CAPTURE_IMAGE);
+            startActivityForResult(i, CAPTUE_IMAGE);
         }
     }
 
@@ -262,7 +265,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         startActivityForResult(galleryIntent, 1);
     }
 
-
     private void uploadToFirestorage(Uri uri) {
         counter++;
         ProgressDialog progressDialog = new ProgressDialog(this);
@@ -271,34 +273,100 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         storageReference = FirebaseStorage.getInstance().getReference();
         storageReference = storageReference.child(mAuth.getUid()).child("userDocuments").child("photo_" + System.currentTimeMillis() + "." + getFileExtension(uri));
         if (uri != null) {
-            storageReference
-                    .putFile(uri)
-                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    storageReference.getDownloadUrl()
+                            .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    uriIamge = uri;
+//                                    Toast.makeText(ProcessActivity.this, uri.toString(), Toast.LENGTH_SHORT).show();
+                                    //
+//                                    if (counter == 1)
+//                                        myRef.child("userDocuments").child("Passport").setValue(uri.toString());
+//                                    else if (counter == 2) {
+//                                        myRef.child("userDocuments").child("Id").setValue(uri.toString());
+//                                    } else if (counter == 3) {
+//                                        myRef.child("userDocuments").child("Birthdate").setValue(uri.toString());
+//                                    } else if (counter == 4) {
+//                                        myRef.child("userDocuments").child("Police Certificate").setValue(uri.toString());
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
+//                                    }
+                                }
+                            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            storageReference.getDownloadUrl()
-                                    .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            if (counter == 1)
-                                                myRef.child("userDocuments").child("Passport").setValue(uri.toString());
-                                            else if (counter == 2) {
-                                                myRef.child("userDocuments").child("Id").setValue(uri.toString());
-                                            } else if (counter == 3) {
-                                                myRef.child("userDocuments").child("Birthdate").setValue(uri.toString());
-                                            } else if (counter == 4) {
-                                                myRef.child("userDocuments").child("Police Certificate").setValue(uri.toString());
-                                            } else {
-                                                Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
-                                            }
-                                            progressDialog.dismiss();
-                                        }
-                                    });
+                        public void onComplete(@NonNull @NotNull Task<Uri> task) {
+                            progressDialog.dismiss();
+                            setInRealTimeFireBase();
                         }
                     });
+                }
+            });
         }
     }
 
+    private void setInRealTimeFireBase() {
+        if (counter == 1)
+            myRef.child("userDocuments").child("Passport").setValue(uriIamge.toString());
+            //Toast.makeText(ProcessActivity.this," uri.toString()", Toast.LENGTH_SHORT).show();
+        else if (counter == 2) {
+            myRef.child("userDocuments").child("Id").setValue(uriIamge.toString());
+        } else if (counter == 3) {
+            myRef.child("userDocuments").child("Birthdate").setValue(uriIamge.toString());
+        } else if (counter == 4) {
+            myRef.child("userDocuments").child("Police Certificate").setValue(uriIamge.toString());
+        } else {
+            Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case CAPTUE_IMAGE:
+                if (resultCode == RESULT_OK) {
+                    if (imageName.equals("passport")) {
+                        bitmap = (Bitmap) data.getExtras().get("data");
+                        uriPassPort = getImageUri(ProcessActivity.this, bitmap);
+                        PassPortPic.setImageBitmap(bitmap);
+                        uploadToFirestorage(uriPassPort);
+                    } else if (imageName.equals("id")) {
+                        bitmap = (Bitmap) data.getExtras().get("data");
+                        IdPic.setImageBitmap(bitmap);
+                        uriId = getImageUri(ProcessActivity.this, bitmap);
+                        uploadToFirestorage(uriId);
+                    } else if (imageName.equals("birthdate")) {
+                        bitmap = (Bitmap) data.getExtras().get("data");
+                        BirthdatePic.setImageBitmap(bitmap);
+                        uriBirthdate = getImageUri(ProcessActivity.this, bitmap);
+                        uploadToFirestorage(uriBirthdate);
+                    } else if (imageName.equals("police")) {
+                        bitmap = (Bitmap) data.getExtras().get("data");
+                        PolicePic.setImageBitmap(bitmap);
+                        uriPolice = getImageUri(ProcessActivity.this, bitmap);
+                        uploadToFirestorage(uriPolice);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+            case PICKFILE_RESULT_CODE:
+                if (resultCode == RESULT_OK) {
+                    Date date = new Date();
+                    UriTree = data.getData();
+                    final String message = firstName + "family_tree" + date.getDate();
+                    storageReference = FirebaseStorage.getInstance().getReference();
+                    Toast.makeText(ProcessActivity.this, UriTree.toString(), Toast.LENGTH_SHORT).show();
+                    final StorageReference filepath = storageReference.child(mAuth.getUid()).child("userDocuments").child(message + "." + getFileExtension(UriTree));
+                    UploadToFireBaseFromMediaStorage(UriTree, filepath);
+                    FamilyTreePic.setVisibility(View.VISIBLE);
+                }
+                break;
+        }
+    }
 
     private void UploadToFireBaseFromMediaStorage(Uri uri, StorageReference filepath) {
         ProgressDialog progressDialog = new ProgressDialog(this);
@@ -332,51 +400,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case CAPTURE_IMAGE:
-                if (resultCode == RESULT_OK) {
-                    if (imageName.equals("passport")) {
-                        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                        PassPortPic.setImageBitmap(bitmap);
-                        uriPassPort = getImageUri(ProcessActivity.this, bitmap);
-                        uploadToFirestorage(uriPassPort);
-                    } else if (imageName.equals("id")) {
-                        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                        IdPic.setImageBitmap(bitmap);
-                        uriId = getImageUri(ProcessActivity.this, bitmap);
-                        uploadToFirestorage(uriId);
-                    } else if (imageName.equals("birthdate")) {
-                        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                        BirthdatePic.setImageBitmap(bitmap);
-                        uriBirthdate = getImageUri(ProcessActivity.this, bitmap);
-                        uploadToFirestorage(uriBirthdate);
-                    } else if (imageName.equals("police")) {
-                        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                        PolicePic.setImageBitmap(bitmap);
-                        uriPolice = getImageUri(ProcessActivity.this, bitmap);
-                        uploadToFirestorage(uriPolice);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-                }
-            case PICKFILE_RESULT_CODE:
-                if (resultCode == RESULT_OK) {
-                    Date date = new Date();
-                    UriTree = data.getData();
-                    final String message = firstName + "family_tree" + date.getDate();
-                    storageReference = FirebaseStorage.getInstance().getReference();
-                    Toast.makeText(ProcessActivity.this, UriTree.toString(), Toast.LENGTH_SHORT).show();
-                    final StorageReference filepath = storageReference.child(mAuth.getUid()).child("userDocuments").child(message + "." + getFileExtension(UriTree));
-                    UploadToFireBaseFromMediaStorage(UriTree, filepath);
-                    FamilyTreePic.setVisibility(View.VISIBLE);
-                }
-                break;
-        }
-    }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();

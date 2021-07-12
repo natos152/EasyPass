@@ -1,9 +1,11 @@
 package com.example.easypass;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             //startActivity(new Intent(MainActivity.this, ProcessActivity.class));
-                                            startActivity(new Intent(MainActivity.this, StatusRequestActivity.class));
+                                            startActivity(new Intent(MainActivity.this, ProcessActivity.class));
                                         }
                                     }, 2000);
 //                                    } else if (userExist != null) {
@@ -120,20 +122,24 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
+    private void logoutUser() {
+        new AlertDialog.Builder(MainActivity.this).
+                setTitle("התנתקות").
+                setMessage("אתה בטוח שאתה רוצה להתנתק ?").
+                setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mAuth.signOut();
+                        finish();
+                        System.exit(0);
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null).
+                setIcon(android.R.drawable.ic_dialog_info).show();
+    }
 
     @Override
     public void onBackPressed() { // התנתקות לאחר שתי לחיצות.
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast.cancel();
-            super.onBackPressed();
-            return;
-        } else {
-            backToast = Toast.makeText(getBaseContext(), "לחץ שוב כדי לצאת", Toast.LENGTH_SHORT);
-            backToast.show();
-            finish();
-            System.exit(0);
-        }
-        backPressedTime = System.currentTimeMillis();
+        logoutUser();
     }
 }
