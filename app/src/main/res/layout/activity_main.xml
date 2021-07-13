@@ -4,9 +4,9 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/new_background"
   android:orientation="vertical"
   android:weightSum="20"
-  android:background="@drawable/background_portugal"
   tools:context=".MainActivity">
 
   <Space
@@ -15,17 +15,12 @@
     android:layout_height="0dp"
     android:layout_weight="1" />
 
-  <ImageView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="2.5"
-    android:src="@mipmap/main_new_icon_round" />
 
   <Space
 
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1" />
+    android:layout_weight="5" />
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -79,13 +74,14 @@
 
       <Button
         android:id="@+id/login_btn"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="12dp"
         android:layout_weight="1"
-        android:backgroundTint="#8BC34A"
+        android:backgroundTint="#15720F"
         android:text="התחבר/י"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
       <Space
         android:layout_width="match_parent"
@@ -94,14 +90,14 @@
 
       <Button
         android:id="@+id/sign_up_btn"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="27dp"
         android:layout_weight="1"
-        android:background="@drawable/original_icon"
-        android:backgroundTint="#8BC34A"
+        android:backgroundTint="#15720F"
         android:text="עוד לא רשום/ה ? לחצ/י כאן"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold" />
     </LinearLayout>
 
   </LinearLayout>

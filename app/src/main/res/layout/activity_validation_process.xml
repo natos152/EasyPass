@@ -5,6 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:layout_marginRight="15dp"
+  android:background="@drawable/f_bg"
   android:scrollbarSize="4dp"
   tools:context=".ValidationProcess">
 
@@ -13,12 +14,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="15dp"
     android:scrollbarSize="4dp"
     android:text=" בירור זכאות לדרכון פורטוגלי"
+    android:textAlignment="center"
     android:textColor="#F44336"
     android:textSize="20sp"
-    android:textStyle="bold|italic" />
+    android:textStyle="bold" />
 
 
   <Button
@@ -28,6 +30,8 @@
     android:layout_centerHorizontal="true"
     android:onClick="onClick"
     android:scrollbarSize="4dp"
+    android:backgroundTint="#15720F"
+    android:layout_marginTop="10dp"
     android:text="המשך"
     android:layout_below="@id/radioAnswers"
     android:textSize="20sp"
@@ -40,37 +44,43 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/textView4"
     android:layout_alignParentRight="true"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="15dp"
     android:layout_marginRight="10dp"
     android:scrollbarSize="4dp"
-    android:text="א. האם סבא ממוצא של אחת המדינות הנ''ל ?"
-    android:textSize="16sp" />
+    android:text="האם סבא ממוצא של אחת המדינות הנ''ל ?"
+    android:textAlignment="center"
+    android:textSize="16sp"
+    android:textStyle="bold" />
+
+
 
   <TextView
     android:id="@+id/textView14"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/textView15"
-    android:layout_marginTop="4dp"
     android:layout_marginLeft="18dp"
+    android:layout_marginTop="20dp"
     android:layout_marginRight="10dp"
     android:linksClickable="true"
-    android:text="ב. האם אתה מופיע ברשימת שמות המשפחה שפורסמו ע''י ממשלת פורטוגול"
-    android:textAlignment="textStart"
-    android:textSize="16sp" />
+    android:text="האם אתה מופיע ברשימת שמות המשפחה שפורסמו ע''י ממשלת פורטוגול"
+    android:textAlignment="center"
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/linkLastName"
     android:layout_width="80dp"
     android:layout_height="wrap_content"
     android:layout_below="@id/textView14"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
     android:linksClickable="true"
     android:scrollbarSize="4dp"
     android:text="לחץ כאן"
-    android:layout_centerHorizontal="true"
     android:textAlignment="center"
     android:textColor="#0000FF"
-    android:textSize="16sp"
+    android:textSize="18sp"
     android:textStyle="normal|bold"
     android:visibility="visible"
     tools:visibility="visible" />
@@ -81,10 +91,12 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/linkLastName"
     android:layout_centerHorizontal="true"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="15dp"
     android:scrollbarSize="4dp"
     android:text="האם אתה עונה על כל הקריטריונים ?"
-    android:textSize="16sp" />
+    android:textColor="@android:color/holo_red_light"
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/textView8"
@@ -95,7 +107,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="2.תורכיה"
-    android:textSize="16sp" />
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/textView10"
@@ -106,7 +119,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="4.לוב"
-    android:textSize="16sp" />
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/textView11"
@@ -117,7 +131,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="5.תוניסיה"
-    android:textSize="16sp" />
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/textView12"
@@ -128,7 +143,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="6.אלג'יר"
-    android:textSize="16sp" />
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/textView15"
@@ -139,7 +155,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="7.תורכיה"
-    android:textSize="16sp" />
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/textView9"
@@ -150,7 +167,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="3.מצריים"
-    android:textSize="16sp" />
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <TextView
     android:id="@+id/textView7"
@@ -158,12 +176,13 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/textView6"
     android:layout_alignEnd="@id/textView6"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="12dp"
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
-    android:text="1. מרוקו"
+    android:text="1.מרוקו"
     android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-    android:textSize="16sp" />
+    android:textSize="16sp"
+    android:textStyle="bold" />
 
   <RadioGroup
     android:id="@+id/radioAnswers"
@@ -183,6 +202,7 @@
       android:scrollbarSize="4dp"
       android:text="לא"
       android:textSize="16sp"
+      android:textStyle="bold"
       tools:layout_editor_absoluteX="148dp"
       tools:layout_editor_absoluteY="554dp" />
 
@@ -196,6 +216,7 @@
       android:scrollbarSize="4dp"
       android:text="כן"
       android:textSize="16sp"
+      android:textStyle="bold"
       tools:layout_editor_absoluteX="0dp"
       tools:layout_editor_absoluteY="99dp" />
 

@@ -18,14 +18,20 @@
     <activity android:name=".FinishProcess" />
     <activity android:name=".ContactUs" />
     <activity android:name=".StatusRequestActivity" />
-    <activity android:name=".AdvancedRegisterActivity" />
-    <activity android:name=".ValidationProcess" />
-    <activity android:name=".SplashScreenActivity">
+    <activity android:name=".AdvancedRegisterActivity" ></activity>
+    <activity android:name=".ValidationProcess" >
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
+    </activity>
+    <activity android:name=".SplashScreenActivity">
+<!--      <intent-filter>-->
+<!--        <action android:name="android.intent.action.MAIN" />-->
+
+<!--        <category android:name="android.intent.category.LAUNCHER" />-->
+<!--      </intent-filter>-->
     </activity>
     <activity android:name=".ProcessActivity" />
     <activity android:name=".MainActivity" />

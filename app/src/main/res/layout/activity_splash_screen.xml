@@ -23,7 +23,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="255dp"
-    android:text="הדרך הפשוטה להוצאת דרכון פורטוגלי"
+    android:text="הדרך הקלה להוצאת דרכון פורטוגלי"
     android:textAlignment="center"
     android:textColor="@color/teal_700"
     android:textSize="18sp"
