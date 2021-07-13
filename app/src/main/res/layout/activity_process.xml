@@ -110,7 +110,7 @@
   <ImageView
     android:id="@+id/tree_view"
     android:layout_width="78dp"
-    android:layout_height="72dp"
+    android:layout_height="80dp"
     android:layout_marginTop="578dp"
     android:layout_marginBottom="81dp"
     android:foreground="@drawable/frame"
@@ -177,7 +177,7 @@
   <Button
     android:id="@+id/btn_upload_ID"
     android:layout_width="180dp"
-    android:layout_height="72dp"
+    android:layout_height="60dp"
     android:layout_marginTop="232dp"
     android:layout_marginBottom="432dp"
     android:backgroundTint="#15720F"
@@ -239,8 +239,8 @@
 
   <ImageView
     android:id="@+id/passport_view"
-    android:layout_width="78dp"
-    android:layout_height="80dp"
+    android:layout_width="74dp"
+    android:layout_height="74dp"
     android:layout_marginTop="124dp"
     android:layout_marginBottom="527dp"
     android:foreground="@drawable/frame"

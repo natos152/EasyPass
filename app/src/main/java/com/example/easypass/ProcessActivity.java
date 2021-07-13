@@ -101,7 +101,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         initButtons();
         readFromDB();
         counter = 0;
-
     }
 
     private void readFromDB() {
