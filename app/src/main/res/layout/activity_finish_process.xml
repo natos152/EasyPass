@@ -9,6 +9,24 @@
 
 
   <TextView
+    android:id="@+id/textView26"
+    android:layout_width="237dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="130dp"
+    android:layout_marginTop="461dp"
+    android:layout_marginEnd="44dp"
+    android:layout_marginBottom="220dp"
+    android:text="שתפ/י אותנו לחבריך :)"
+    android:textAlignment="center"
+    android:textColor="#7D2B2B"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
     android:id="@+id/textView22"
     android:layout_width="352dp"
     android:layout_height="130dp"
@@ -82,5 +100,20 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:visibility="visible" />
+
+  <ImageButton
+    android:id="@+id/share_btn"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="46dp"
+    android:layout_marginTop="452dp"
+    android:layout_marginEnd="315dp"
+    android:layout_marginBottom="229dp"
+    android:onClick="onClick2"
+    android:src="@drawable/share5"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

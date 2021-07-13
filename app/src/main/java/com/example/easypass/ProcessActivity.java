@@ -42,8 +42,10 @@ import com.google.firebase.storage.UploadTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class ProcessActivity extends AppCompatActivity implements View.OnClickListener {
@@ -64,7 +66,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     ProgressDialog dialog;
     String firstName = null, lastname = null, birthclient = null, idclient = null, passclient = null, policcerclient = null, fmilyclient = null;
     Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice;
-    static int counter = 0;
+    static int counter = 0, countUploadFirebase = 0;
+    String uriPassport = "", uriID = "", uriBirth = "", uriPol = "", uriFamilyTree = "";
 
     @Override
     public void onBackPressed() {
@@ -180,7 +183,42 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     myRef.child("Case number").setValue(case_number);
                     myRef.child("Status Request").setValue("1");
                     startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
-                    sendEmail();
+                    myRef.child("userDocuments").child("Passport").setValue(uriPassport, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
+                            countUploadFirebase++;
+                        }
+                    });
+                    myRef.child("userDocuments").child("Id").setValue(uriID, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
+                            countUploadFirebase++;
+
+                        }
+                    });
+                    myRef.child("userDocuments").child("Birthdate").setValue(uriBirth, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
+                            countUploadFirebase++;
+                        }
+                    });
+                    myRef.child("userDocuments").child("Police Certificate").setValue(uriPol, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
+                            countUploadFirebase++;
+                        }
+                    });
+                    myRef.child("userDocuments").child("FamilyTree").setValue(uriFamilyTree, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
+                            countUploadFirebase++;
+                        }
+                    });
+                    if (countUploadFirebase == 5) {
+                        sendEmail();
+                        startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
+                    }
+
                 }
                 break;
             default:
@@ -260,7 +298,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     private void uploadFile() {
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        // We will be redirected to choose pdf
         galleryIntent.setType("application/pdf");
         startActivityForResult(galleryIntent, 1);
     }
@@ -279,17 +316,17 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                             .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    if (counter == 1)
-                                        myRef.child("userDocuments").child("Passport").setValue(uri.toString());
-                                    else if (counter == 2) {
-                                        myRef.child("userDocuments").child("Id").setValue(uri.toString());
+                                    if (counter == 1) {
+                                        uriPassport = uri.toString();
+                                    } else if (counter == 2) {
+                                        uriID = uri.toString();
                                     } else if (counter == 3) {
-                                        myRef.child("userDocuments").child("Birthdate").setValue(uri.toString());
+                                        uriBirth = uri.toString();
                                     } else if (counter == 4) {
-                                        myRef.child("userDocuments").child("Police Certificate").setValue(uri.toString());
+                                        uriPol = uri.toString();
                                     } else {
                                         Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
-                                  }
+                                    }
                                 }
                             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
@@ -343,7 +380,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     UriTree = data.getData();
                     final String message = firstName + "family_tree" + date.getDate();
                     storageReference = FirebaseStorage.getInstance().getReference();
-                    Toast.makeText(ProcessActivity.this, UriTree.toString(), Toast.LENGTH_SHORT).show();
                     final StorageReference filepath = storageReference.child(mAuth.getUid()).child("userDocuments").child(message + "." + getFileExtension(UriTree));
                     UploadToFireBaseFromMediaStorage(UriTree, filepath);
                     FamilyTreePic.setVisibility(View.VISIBLE);
@@ -371,11 +407,9 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
                         UriTree = task.getResult();
-                        myRef.child("userDocuments").child("FamilyTree").setValue(UriTree.toString());
-                        Toast.makeText(ProcessActivity.this, "העלאה הועלה בהצלחה", Toast.LENGTH_SHORT).show();
+                        uriFamilyTree = UriTree.toString();
                     } else {
                         dialog.dismiss();
-                        Toast.makeText(ProcessActivity.this, "העלאה נכשלה בדוק את הקובץ", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

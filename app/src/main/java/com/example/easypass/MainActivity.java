@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                startActivity(new Intent(MainActivity.this, ProcessActivity.class));
+                                                startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
                                             }
                                         }, 1500);
                                     } else if (userExist != null) {
