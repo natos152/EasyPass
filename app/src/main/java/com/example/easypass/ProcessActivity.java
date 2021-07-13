@@ -63,8 +63,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     String fileName = "";
     ProgressDialog dialog;
     String firstName = null, lastname = null, birthclient = null, idclient = null, passclient = null, policcerclient = null, fmilyclient = null;
-    Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice, uriIamge;
-    int counter = 0;
+    Uri uriPassPort, uriId, UriTree, uriBirthdate, uriPolice;
+    static int counter = 0;
 
     @Override
     public void onBackPressed() {
@@ -266,7 +266,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void uploadToFirestorage(Uri uri) {
-        counter++;
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading...");
         progressDialog.show();
@@ -280,45 +279,26 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                             .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    uriIamge = uri;
-//                                    Toast.makeText(ProcessActivity.this, uri.toString(), Toast.LENGTH_SHORT).show();
-                                    //
-//                                    if (counter == 1)
-//                                        myRef.child("userDocuments").child("Passport").setValue(uri.toString());
-//                                    else if (counter == 2) {
-//                                        myRef.child("userDocuments").child("Id").setValue(uri.toString());
-//                                    } else if (counter == 3) {
-//                                        myRef.child("userDocuments").child("Birthdate").setValue(uri.toString());
-//                                    } else if (counter == 4) {
-//                                        myRef.child("userDocuments").child("Police Certificate").setValue(uri.toString());
-//                                    } else {
-//                                        Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
-//                                    }
+                                    if (counter == 1)
+                                        myRef.child("userDocuments").child("Passport").setValue(uri.toString());
+                                    else if (counter == 2) {
+                                        myRef.child("userDocuments").child("Id").setValue(uri.toString());
+                                    } else if (counter == 3) {
+                                        myRef.child("userDocuments").child("Birthdate").setValue(uri.toString());
+                                    } else if (counter == 4) {
+                                        myRef.child("userDocuments").child("Police Certificate").setValue(uri.toString());
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
+                                  }
                                 }
                             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<Uri> task) {
                             progressDialog.dismiss();
-                            setInRealTimeFireBase();
                         }
                     });
                 }
             });
-        }
-    }
-
-    private void setInRealTimeFireBase() {
-        if (counter == 1)
-            myRef.child("userDocuments").child("Passport").setValue(uriIamge.toString());
-            //Toast.makeText(ProcessActivity.this," uri.toString()", Toast.LENGTH_SHORT).show();
-        else if (counter == 2) {
-            myRef.child("userDocuments").child("Id").setValue(uriIamge.toString());
-        } else if (counter == 3) {
-            myRef.child("userDocuments").child("Birthdate").setValue(uriIamge.toString());
-        } else if (counter == 4) {
-            myRef.child("userDocuments").child("Police Certificate").setValue(uriIamge.toString());
-        } else {
-            Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -332,21 +312,25 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                         bitmap = (Bitmap) data.getExtras().get("data");
                         uriPassPort = getImageUri(ProcessActivity.this, bitmap);
                         PassPortPic.setImageBitmap(bitmap);
+                        counter++;
                         uploadToFirestorage(uriPassPort);
                     } else if (imageName.equals("id")) {
                         bitmap = (Bitmap) data.getExtras().get("data");
                         IdPic.setImageBitmap(bitmap);
                         uriId = getImageUri(ProcessActivity.this, bitmap);
+                        counter++;
                         uploadToFirestorage(uriId);
                     } else if (imageName.equals("birthdate")) {
                         bitmap = (Bitmap) data.getExtras().get("data");
                         BirthdatePic.setImageBitmap(bitmap);
                         uriBirthdate = getImageUri(ProcessActivity.this, bitmap);
+                        counter++;
                         uploadToFirestorage(uriBirthdate);
                     } else if (imageName.equals("police")) {
                         bitmap = (Bitmap) data.getExtras().get("data");
                         PolicePic.setImageBitmap(bitmap);
                         uriPolice = getImageUri(ProcessActivity.this, bitmap);
+                        counter++;
                         uploadToFirestorage(uriPolice);
                     } else {
                         Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();

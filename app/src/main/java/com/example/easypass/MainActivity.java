@@ -86,29 +86,28 @@ public class MainActivity extends AppCompatActivity {
                                     String passport = snapshot.child("userDocuments").child("Passport").getValue(String.class);
                                     String police = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
                                     dialog.dismiss();
-//                                    if (bir != null && fml != null && id != null && passport != null && police != null) {
-//                                    startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            //startActivity(new Intent(MainActivity.this, ProcessActivity.class));
-                                            startActivity(new Intent(MainActivity.this, ProcessActivity.class));
-                                        }
-                                    }, 2000);
-//                                    } else if (userExist != null) {
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-//                                        startActivity(new Intent(MainActivity.this, ProcessActivity.class));
-                                        }
-                                    }, 2000);
-//                                    } else {
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-//                                        startActivity(new Intent(MainActivity.this, AdvancedRegisterActivity.class));
-                                        }
-                                    }, 2000);//                                    }
+                                    if (bir != null && fml != null && id != null && passport != null && police != null) {
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                startActivity(new Intent(MainActivity.this, ProcessActivity.class));
+                                            }
+                                        }, 1500);
+                                    } else if (userExist != null) {
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                startActivity(new Intent(MainActivity.this, ProcessActivity.class));
+                                            }
+                                        }, 1500);
+                                    } else {
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                startActivity(new Intent(MainActivity.this, AdvancedRegisterActivity.class));
+                                            }
+                                        }, 1500);
+                                    }
                                 }
 
                                 @Override
