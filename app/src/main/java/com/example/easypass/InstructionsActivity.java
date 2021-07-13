@@ -89,7 +89,7 @@ public class InstructionsActivity extends AppCompatActivity {
         } else {
             new AlertDialog.Builder(InstructionsActivity.this).
                     setTitle("שגיאת אימות").
-                    setMessage("מספר תיק שגוי, אנא הזנ/י שוב או פני/ה לתמיכה בכתפור יצירת קשר למעלה בצד שמאל של המסך").
+                    setMessage("מספר תיק שגוי, אנא הזנ/י שוב או פני/ה לתמיכה בכתפור יצירת קשר למעלה בצד שמאל על גבי המסך").
                     setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

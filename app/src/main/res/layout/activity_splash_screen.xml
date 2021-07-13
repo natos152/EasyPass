@@ -22,7 +22,7 @@
     android:id="@+id/textView2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="255dp"
+    android:layout_marginBottom="292dp"
     android:text="הדרך הקלה להוצאת דרכון פורטוגלי"
     android:textAlignment="center"
     android:textColor="@color/teal_700"

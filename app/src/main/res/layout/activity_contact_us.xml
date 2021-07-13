@@ -4,6 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/f2_bg"
   tools:context=".ContactUs">
 
 
@@ -39,10 +40,10 @@
     android:layout_marginBottom="89dp"
     android:text="יצירת קשר"
     android:textAlignment="center"
-    android:textColor="@color/purple_700"
+    android:textColor="@color/teal_700"
     android:textDirection="firstStrongRtl"
     android:textSize="24sp"
-    android:textStyle="bold|italic"
+    android:textStyle="bold"
     android:visibility="visible"
     app:layout_constraintBottom_toTopOf="@+id/subject"
     app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +55,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="240dp"
+    android:backgroundTint="#15720F"
     android:onClick="onClick"
     android:text="שלח בקשה"
-    android:textSize="18sp"
+    android:textSize="20sp"
+    android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

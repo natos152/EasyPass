@@ -91,7 +91,7 @@
       <Button
         android:id="@+id/sign_up_btn"
         android:layout_width="match_parent"
-        android:layout_height="27dp"
+        android:layout_height="50dp"
         android:layout_weight="1"
         android:backgroundTint="#15720F"
         android:text="עוד לא רשום/ה ? לחצ/י כאן"
