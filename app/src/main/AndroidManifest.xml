@@ -15,11 +15,11 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.EasyPass">
     <activity android:name=".InstructionsActivity"></activity>
-    <activity android:name=".FinishProcess" />
+    <activity android:name=".FinishProcess"></activity>
     <activity android:name=".ContactUs"></activity>
     <activity android:name=".StatusRequestActivity"></activity>
-    <activity android:name=".AdvancedRegisterActivity" ></activity>
-    <activity android:name=".ValidationProcess" ></activity>
+    <activity android:name=".AdvancedRegisterActivity"></activity>
+    <activity android:name=".ValidationProcess"></activity>
     <activity android:name=".SplashScreenActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -28,8 +28,8 @@
       </intent-filter>
     </activity>
     <activity android:name=".ProcessActivity"></activity>
-    <activity android:name=".MainActivity" />
-    <activity android:name=".SignUpActivity" />
+    <activity android:name=".MainActivity"></activity>
+    <activity android:name=".SignUpActivity"></activity>
   </application>
 
 </manifest>
