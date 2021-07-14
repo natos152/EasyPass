@@ -90,21 +90,21 @@ public class MainActivity extends AppCompatActivity {
                                             public void run() {
                                                 startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
                                             }
-                                        }, 2000);
+                                        }, 1500);
                                     } else if (userExist != null) {
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
                                                 startActivity(new Intent(MainActivity.this, ProcessActivity.class));
                                             }
-                                        }, 2000);
+                                        }, 1500);
                                     } else {
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
                                                 startActivity(new Intent(MainActivity.this, AdvancedRegisterActivity.class));
                                             }
-                                        }, 2000);
+                                        }, 1500);
                                     }
                                 }
 

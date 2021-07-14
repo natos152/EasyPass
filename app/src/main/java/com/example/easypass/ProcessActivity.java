@@ -136,6 +136,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         BirthdatePic = findViewById(R.id.birthdate_view);
         PolicePic = findViewById(R.id.police_view);
         FamilyTreePic = findViewById(R.id.tree_view);
+
     }
 
     public void onClick(View v) {
@@ -381,11 +382,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     private void uploadFile() {
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        if (counter >= 4)
-            galleryIntent.setType("application/pdf");
-        else {
-            galleryIntent.setType("application/");
-        }
+        galleryIntent.setType("application/*");
         startActivityForResult(galleryIntent, 1);
     }
 
@@ -435,68 +432,84 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         switch (requestCode) {
             case CAPTUE_IMAGE:
                 if (resultCode == RESULT_OK) {
-                    if (fileName.equals("passport")) {
-                        bitmap = (Bitmap) data.getExtras().get("data");
-                        uriPassPort = getImageUri(ProcessActivity.this, bitmap);
-                        PassPortPic.setImageBitmap(bitmap);
-                        counter++;
-                        UploadToFireStorage(uriPassPort);
-                    } else if (fileName.equals("id")) {
-                        bitmap = (Bitmap) data.getExtras().get("data");
-                        IdPic.setImageBitmap(bitmap);
-                        uriId = getImageUri(ProcessActivity.this, bitmap);
-                        counter++;
-                        UploadToFireStorage(uriId);
-                    } else if (fileName.equals("birthdate")) {
-                        bitmap = (Bitmap) data.getExtras().get("data");
-                        BirthdatePic.setImageBitmap(bitmap);
-                        uriBirthdate = getImageUri(ProcessActivity.this, bitmap);
-                        counter++;
-                        UploadToFireStorage(uriBirthdate);
-                    } else if (fileName.equals("police")) {
-                        bitmap = (Bitmap) data.getExtras().get("data");
-                        PolicePic.setImageBitmap(bitmap);
-                        uriPolice = getImageUri(ProcessActivity.this, bitmap);
-                        counter++;
-                        UploadToFireStorage(uriPolice);
-                    } else if (fileName.equals("family")) {
-                        bitmap = (Bitmap) data.getExtras().get("data");
-                        FamilyTreePic.setImageBitmap(bitmap);
-                        uriTree = getImageUri(ProcessActivity.this, bitmap);
-                        counter++;
-                        UploadToFireStorage(uriTree);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();
+                    switch (fileName) {
+                        case "passport":
+                            bitmap = (Bitmap) data.getExtras().get("data");
+                            PassPortPic.setImageBitmap(bitmap);
+                            uriPassPort = getImageUri(ProcessActivity.this, bitmap);
+                            counter++;
+                            UploadToFireStorage(uriPassPort);
+                            break;
+                        case "id":
+                            bitmap = (Bitmap) data.getExtras().get("data");
+                            IdPic.setImageBitmap(bitmap);
+                            uriId = getImageUri(ProcessActivity.this, bitmap);
+                            counter++;
+                            UploadToFireStorage(uriId);
+                            break;
+                        case "birthdate":
+                            bitmap = (Bitmap) data.getExtras().get("data");
+                            BirthdatePic.setImageBitmap(bitmap);
+                            uriBirthdate = getImageUri(ProcessActivity.this, bitmap);
+                            counter++;
+                            UploadToFireStorage(uriBirthdate);
+                            break;
+                        case "police":
+                            bitmap = (Bitmap) data.getExtras().get("data");
+                            PolicePic.setImageBitmap(bitmap);
+                            uriPolice = getImageUri(ProcessActivity.this, bitmap);
+                            counter++;
+                            UploadToFireStorage(uriPolice);
+                            break;
+                        case "family":
+                            bitmap = (Bitmap) data.getExtras().get("data");
+                            FamilyTreePic.setImageBitmap(bitmap);
+                            uriTree = getImageUri(ProcessActivity.this, bitmap);
+                            counter++;
+                            UploadToFireStorage(uriTree);
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();
+                            break;
                     }
                 }
                 break;
             case PICKFILE_RESULT_CODE:
                 if (resultCode == RESULT_OK) {
-                    if (fileName.equals("passport")) {
-                        counter++;
-                        uriPassPort = data.getData();
-                        PassPortPic.setImageURI(uriPassPort);
-                        UploadToFireStorage(uriPassPort);
-                    } else if (fileName.equals("id")) {
-                        counter++;
-                        uriId = data.getData();
-                        IdPic.setImageURI(uriId);
-                        UploadToFireStorage(uriId);
-                    } else if (fileName.equals("birthdate")) {
-                        counter++;
-                        uriBirthdate = data.getData();
-                        BirthdatePic.setImageURI(uriBirthdate);
-                        UploadToFireStorage(uriBirthdate);
-                    } else if (fileName.equals("police")) {
-                        counter++;
-                        uriPolice = data.getData();
-                        UploadToFireStorage(uriPolice);
-                    } else if (fileName.equals("family")) {
-                        counter++;
-                        uriTree = data.getData();
-                        UploadToFireStorage(uriTree);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "לא הצלחת לעלות קובץ!", Toast.LENGTH_SHORT).show();
+                    switch (fileName) {
+                        case "passport":
+                            counter++;
+                            uriPassPort = data.getData();
+                            PassPortPic.setImageURI(uriPassPort);
+                            UploadToFireStorage(uriPassPort);
+                            break;
+                        case "id":
+                            counter++;
+                            uriId = data.getData();
+                            IdPic.setImageURI(uriId);
+                            UploadToFireStorage(uriId);
+                            break;
+                        case "birthdate":
+                            counter++;
+                            uriBirthdate = data.getData();
+                            BirthdatePic.setImageURI(uriBirthdate);
+                            UploadToFireStorage(uriBirthdate);
+                            break;
+                        case "police":
+                            counter++;
+                            uriPolice = data.getData();
+                            PolicePic.setImageURI(uriPassPort);
+                            UploadToFireStorage(uriPolice);
+                            break;
+                        case "family":
+                            counter++;
+                            uriTree = data.getData();
+                            FamilyTreePic.setImageURI(uriPassPort);
+                            UploadToFireStorage(uriTree);
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(), "לא הצלחת לעלות קובץ!", Toast.LENGTH_SHORT).show();
+                            break;
                     }
                 }
                 break;

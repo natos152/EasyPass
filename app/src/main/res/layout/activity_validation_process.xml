@@ -49,9 +49,9 @@
     android:scrollbarSize="4dp"
     android:text="האם סבא ממוצא של אחת המדינות הנ''ל ?"
     android:textAlignment="center"
+    android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
-
 
 
   <TextView
@@ -65,6 +65,7 @@
     android:linksClickable="true"
     android:text="האם אתה מופיע ברשימת שמות המשפחה שפורסמו ע''י ממשלת פורטוגול"
     android:textAlignment="center"
+    android:textColor="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
@@ -107,6 +108,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="2.תורכיה"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
@@ -119,6 +122,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="4.לוב"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
@@ -131,6 +136,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="5.תוניסיה"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
@@ -143,6 +150,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="6.אלג'יר"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
@@ -155,6 +164,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="7.תורכיה"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
@@ -167,6 +178,8 @@
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
     android:text="3.מצריים"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
@@ -181,6 +194,8 @@
     android:scrollbarSize="4dp"
     android:text="1.מרוקו"
     android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="16sp"
     android:textStyle="bold" />
 
