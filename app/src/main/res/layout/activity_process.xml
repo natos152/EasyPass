@@ -22,7 +22,7 @@
     android:layout_marginBottom="547dp"
     android:backgroundTint="#15720F"
     android:onClick="onClick"
-    android:text="צילום דרכון"
+    android:text=" דרכון"
     android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/textView"
@@ -111,8 +111,6 @@
     android:layout_height="80dp"
     android:layout_marginTop="578dp"
     android:layout_marginBottom="81dp"
-    android:src="@drawable/v_icon"
-    android:visibility="invisible"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/btn_upload_family_tree"
     app:layout_constraintHorizontal_bias="0.5"
@@ -173,13 +171,13 @@
 
   <Button
     android:id="@+id/btn_upload_ID"
-    android:layout_width="180dp"
-    android:layout_height="60dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_marginTop="232dp"
     android:layout_marginBottom="432dp"
     android:backgroundTint="#15720F"
     android:onClick="onClick"
-    android:text="צילום תעודת זהות"
+    android:text="תעודת זהות"
     android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/textView19"
@@ -281,7 +279,7 @@
     tools:visibility="visible" />
 
   <Button
-    android:id="@+id/downloadBtn"
+    android:id="@+id/SendBtn"
     android:layout_width="101dp"
     android:layout_height="39dp"
     android:layout_marginTop="656dp"
@@ -296,5 +294,23 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:ignore="OnClick" />
+
+  <TextView
+    android:id="@+id/textView24"
+    android:layout_width="248dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="147dp"
+    android:layout_marginTop="66dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="627dp"
+    android:text="* אנא העלא/י את המסמכים לפי סדר השלבים"
+    android:textAlignment="center"
+    android:textColor="@color/design_default_color_error"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
