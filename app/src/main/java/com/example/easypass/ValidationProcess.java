@@ -1,7 +1,9 @@
 package com.example.easypass;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -55,8 +57,16 @@ public class ValidationProcess extends AppCompatActivity {
                 }
             }, 3000);
         } else {
-            Toast.makeText(ValidationProcess.this, "אינך זכאי לקבל דרכון פורטוגלי", Toast.LENGTH_SHORT).show();
-            return;
+            new AlertDialog.Builder(ValidationProcess.this).
+                    setTitle("שגיאה").
+                    setMessage("אינך זכאי לקבל דרכון פורטוגלי").
+                    setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            return;
+                        }
+                    }).
+                    setIcon(android.R.drawable.ic_dialog_alert).show();
         }
 
     }

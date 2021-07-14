@@ -25,10 +25,10 @@ public class AdvancedRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_register);
-        initViews();
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance("https://easypass-dcff0-default-rtdb.europe-west1.firebasedatabase.app/");
         myRef = database.getReference("Users");
+        initViews();
         addDataToDB();
     }
 

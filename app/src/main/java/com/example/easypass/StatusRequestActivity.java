@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,9 +46,7 @@ public class StatusRequestActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAuth.signOut();
-                        finish();
-                        System.exit(0);
-                        //startActivity(new Intent(ProcessActivity.this, MainActivity.class));
+                        startActivity(new Intent(StatusRequestActivity.this, MainActivity.class));
                     }
                 })
                 .setNegativeButton(android.R.string.no, null).
@@ -110,8 +107,18 @@ public class StatusRequestActivity extends AppCompatActivity {
     }
 
 
+    public void onClick(View view) {
+        startActivity(new Intent(StatusRequestActivity.this, ContactUs.class));
+    }
+
     private void CheckStatus(String status) {
         switch (status) {
+            case "0":
+                upload_files.setBackgroundResource(R.drawable.shape_status_current);
+                wait_to_check.setBackgroundResource(R.drawable.shape_status_remaining);
+                analyze_files.setBackgroundResource(R.drawable.shape_status_remaining);
+                create_passport.setBackgroundResource(R.drawable.shape_status_remaining);
+                shipping.setBackgroundResource(R.drawable.shape_status_remaining);
             case "1":
                 line_one.setBackgroundColor(Color.GREEN);
                 analyze_files.setBackgroundResource(R.drawable.shape_status_remaining);
@@ -176,9 +183,5 @@ public class StatusRequestActivity extends AppCompatActivity {
                 }, 7000);
                 break;
         }
-    }
-
-    public void onClick(View view) {
-        startActivity(new Intent(StatusRequestActivity.this, ContactUs.class));
     }
 }

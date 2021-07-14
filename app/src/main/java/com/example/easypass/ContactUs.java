@@ -2,12 +2,10 @@ package com.example.easypass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,18 +13,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Arrays;
 
 public class ContactUs extends AppCompatActivity {
     private static final String TAG = "ContactUs";
     EditText Subject, Content;
     Button btnSend;
     FirebaseAuth mAuth;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

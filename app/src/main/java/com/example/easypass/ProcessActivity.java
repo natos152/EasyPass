@@ -42,6 +42,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.UUID;
 
 public class ProcessActivity extends AppCompatActivity implements View.OnClickListener {
@@ -58,7 +59,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     Bitmap bitmap;
     ImageView PassPortPic, IdPic, BirthdatePic, PolicePic, FamilyTreePic;
     String fileName = "";
-    ProgressDialog dialog;
     String firstName = null, lastname = null, birthclient = null, idclient = null, passclient = null, policcerclient = null, fmilyclient = null;
     Uri uriPassPort, uriId, uriTree, uriBirthdate, uriPolice;
     static int counter = 0, countUploadFirebase = 0;
@@ -393,8 +393,9 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading...");
         progressDialog.show();
+        Date date = new Date();
         storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference = storageReference.child(mAuth.getUid()).child("userDocuments").child("photo_" + System.currentTimeMillis() + "." + getFileExtension(uri));
+        storageReference = storageReference.child(mAuth.getUid()).child("userDocuments").child("file_" + date.getTime() + "." + getFileExtension(uri));
         if (uri != null) {
             storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -414,7 +415,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                                     } else if (counter == 5) {
                                         uriFamilyTree = uri.toString();
                                     } else {
-                                        Toast.makeText(getApplicationContext(), "לא הצלחת לשמור את התמונה!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
@@ -495,7 +496,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                         uriTree = data.getData();
                         UploadToFireStorage(uriTree);
                     } else {
-                        Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "לא הצלחת לעלות קובץ!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;

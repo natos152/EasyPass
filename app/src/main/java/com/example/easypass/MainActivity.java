@@ -25,8 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    private long backPressedTime; // התנתקות
-    private Toast backToast;
     EditText Email, Pass;
     Button login_btn, sign_up_btn;
     FirebaseAuth mAuth;
@@ -92,21 +90,21 @@ public class MainActivity extends AppCompatActivity {
                                             public void run() {
                                                 startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
                                             }
-                                        }, 1500);
+                                        }, 2000);
                                     } else if (userExist != null) {
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
                                                 startActivity(new Intent(MainActivity.this, ProcessActivity.class));
                                             }
-                                        }, 1500);
+                                        }, 2000);
                                     } else {
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
                                                 startActivity(new Intent(MainActivity.this, AdvancedRegisterActivity.class));
                                             }
-                                        }, 1500);
+                                        }, 2000);
                                     }
                                 }
 
@@ -120,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+
+    @Override
+    public void onBackPressed() { // התנתקות לאחר שתי לחיצות.
+        exitApp();
     }
 
     private void exitApp() {
@@ -138,8 +142,4 @@ public class MainActivity extends AppCompatActivity {
                 setIcon(android.R.drawable.ic_dialog_info).show();
     }
 
-    @Override
-    public void onBackPressed() { // התנתקות לאחר שתי לחיצות.
-        exitApp();
-    }
 }

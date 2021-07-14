@@ -15,17 +15,18 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.EasyPass">
     <activity android:name=".InstructionsActivity"></activity>
-    <activity android:name=".FinishProcess"></activity>
-    <activity android:name=".ContactUs"></activity>
-    <activity android:name=".StatusRequestActivity"></activity>
-    <activity android:name=".AdvancedRegisterActivity"></activity>
-    <activity android:name=".ValidationProcess"></activity>
-    <activity android:name=".SplashScreenActivity">
+    <activity android:name=".FinishProcess">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
+    </activity>
+    <activity android:name=".ContactUs"></activity>
+    <activity android:name=".StatusRequestActivity"></activity>
+    <activity android:name=".AdvancedRegisterActivity"></activity>
+    <activity android:name=".ValidationProcess"></activity>
+    <activity android:name=".SplashScreenActivity">
     </activity>
     <activity android:name=".ProcessActivity">
     </activity>

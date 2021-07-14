@@ -41,6 +41,9 @@ public class SignUpActivity extends AppCompatActivity {
         btn_Signup = findViewById(R.id.btn_sign_up_cont);
     }
 
+    public void onClick(View view) {
+        signUpUser();
+    }
 
     private void signUpUser() {
         if (Email.getText().toString().equals("") || UserName.getText().toString().equals("") || Pass.getText().toString().equals("") || Repass.getText().toString().equals("")) {
@@ -65,7 +68,4 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    public void onClick(View view) {
-        signUpUser();
-    }
 }
