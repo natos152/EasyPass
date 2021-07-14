@@ -170,10 +170,27 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.downloadBtn:
                 if (PolicePic.getDrawable() == null || BirthdatePic.getDrawable() == null || IdPic.getDrawable() == null || PassPortPic.getDrawable() == null) {
-                    Toast.makeText(getApplicationContext(), "אנא העלאה את כל המסמכים !", Toast.LENGTH_SHORT).show();
-                    return;
+                    new AlertDialog.Builder(ProcessActivity.this).
+                            setTitle("שגיאה").
+                            setMessage("לא עלו כל המסמכים !").
+                            setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    return;
+                                }
+                            }).
+                            setIcon(android.R.drawable.ic_dialog_alert).show();
                 } else if (findViewById((R.id.tree_view)).getVisibility() == View.GONE) {
-                    Toast.makeText(getApplicationContext(), "אנא העלאה קובץ עץ משפחה !", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(ProcessActivity.this).
+                            setTitle("שגיאה").
+                            setMessage("לא הועלאה עץ משפחה !").
+                            setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    return;
+                                }
+                            }).
+                            setIcon(android.R.drawable.ic_dialog_alert).show();
                     return;
                 } else {
                     Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
@@ -181,7 +198,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     case_number = case_number.substring(0, 10);
                     myRef.child("Case number").setValue(case_number);
                     myRef.child("Status Request").setValue("1");
-                    startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
                     myRef.child("userDocuments").child("Passport").setValue(uriPassport, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
@@ -215,7 +231,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     });
                     if (countUploadFirebase == 5) {
                         sendEmail();
-                        startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
                     }
 
                 }
@@ -265,6 +280,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(Intent.createChooser(emailIntent, "שולח מייל..."));
             finish();
             Log.i("מסיים לשלוח את המייל...", "");
+            startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
         } catch (ActivityNotFoundException ex) {
             Toast.makeText(ProcessActivity.this,
                     "אימייל לא תקין...", Toast.LENGTH_SHORT).show();
