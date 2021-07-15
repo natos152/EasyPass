@@ -2,12 +2,12 @@ package com.example.easypass;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,8 +16,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -41,7 +41,6 @@ import com.google.firebase.storage.UploadTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -58,9 +57,9 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     StorageReference storageReference;
     ImageView PassPortPic, IdPic, BirthdatePic, PolicePic, FamilyTreePic;
     String fileName = "";
-    String firstName = null, lastname = null, birthclient = null, idclient = null, passclient = null, policcerclient = null, fmilyclient = null;
+    String firstName = null, lastname = null;
     Uri uriPassPort = null, uriId = null, uriTree = null, uriBirthdate = null, uriPolice = null;
-    static int counter = 0, countUploadFirebase = 0;
+    static int counter = 0;
     String uriPassport = "", uriID = "", uriBirth = "", uriPol = "", uriFamilyTree = "";
 
     @Override
@@ -255,91 +254,25 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     case_number = case_number.substring(0, 10);
                     myRef.child("Case number").setValue(case_number);
                     myRef.child("Status Request").setValue("1");
-                    myRef.child("userDocuments").child("Passport").setValue(uriPassport, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
-                            countUploadFirebase++;
-                        }
-                    });
-                    myRef.child("userDocuments").child("Id").setValue(uriID, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
-                            countUploadFirebase++;
-                        }
-                    });
-                    myRef.child("userDocuments").child("Birthdate").setValue(uriBirth, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
-                            countUploadFirebase++;
-                        }
-                    });
-                    myRef.child("userDocuments").child("Police Certificate").setValue(uriPol, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
-                            countUploadFirebase++;
-                        }
-                    });
-                    myRef.child("userDocuments").child("FamilyTree").setValue(uriFamilyTree, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
-                            countUploadFirebase++;
-                        }
-                    });
-                    if (countUploadFirebase == 5) {
-                        sendEmail();
+                    myRef.child("userDocuments").child("Passport").setValue(uriPassport);
+                    myRef.child("userDocuments").child("Id").setValue(uriID);
+                    myRef.child("userDocuments").child("Birthdate").setValue(uriBirth);
+                    myRef.child("userDocuments").child("Police Certificate").setValue(uriPol);
+                    myRef.child("userDocuments").child("FamilyTree").setValue(uriFamilyTree);
+                    if (counter >= 5) {
+                        Toast.makeText(getApplicationContext(), "המסמכים הועלאו למערכת בהצלחה !", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                myRef.child("count_send").setValue("0");
+                                startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
+                            }
+                        }, 1500);
                     }
-
                 }
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
-        }
-    }
-
-    public void sendEmail() {
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                birthclient = snapshot.child("userDocuments").child("Birthdate").getValue(String.class);
-                idclient = snapshot.child("userDocuments").child("Id").getValue(String.class);
-                passclient = snapshot.child("userDocuments").child("Passport").getValue(String.class);
-                policcerclient = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
-                fmilyclient = snapshot.child("userDocuments").child("FamilyTree").getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        Log.d(TAG, "send email...");
-
-        String[] TO = {"epass876@gmail.com"};
-        String[] CC = {"ron96t@gmail.com"};
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-
-        String[] Documents = {birthclient, idclient, passclient, policcerclient, fmilyclient};
-        String subject = "תיק מסמכים של " + firstName + " " + lastname;
-
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "המסמכים: ");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, Arrays.toString(Documents));
-
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "שולח מייל..."));
-            finish();
-            Log.i("מסיים לשלוח את המייל...", "");
-            Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
-        } catch (ActivityNotFoundException ex) {
-            Toast.makeText(ProcessActivity.this,
-                    "אימייל לא תקין...", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -486,12 +419,15 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
                 break;
+            default:
+                Toast.makeText(getApplicationContext(), "שגיאת אימות קוד קובץ!", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.WEBP_LOSSLESS, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.WEBP, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
@@ -508,7 +444,6 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             }
         }
     }
-
 
 
     private String getFileExtension(Uri uri) {

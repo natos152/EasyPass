@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    String userExist = null, bir = null, fml = null, id = null, passport = null, police = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,18 +78,18 @@ public class MainActivity extends AppCompatActivity {
                             myRef.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String userExist = snapshot.child("UserInfo").child("id").getValue(String.class);
-                                    String bir = snapshot.child("userDocuments").child("Birthdate").getValue(String.class);
-                                    String fml = snapshot.child("userDocuments").child("FamilyTree").getValue(String.class);
-                                    String id = snapshot.child("userDocuments").child("Id").getValue(String.class);
-                                    String passport = snapshot.child("userDocuments").child("Passport").getValue(String.class);
-                                    String police = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
+                                    userExist = snapshot.child("UserInfo").child("id").getValue(String.class);
+                                    bir = snapshot.child("userDocuments").child("Birthdate").getValue(String.class);
+                                    fml = snapshot.child("userDocuments").child("FamilyTree").getValue(String.class);
+                                    id = snapshot.child("userDocuments").child("Id").getValue(String.class);
+                                    passport = snapshot.child("userDocuments").child("Passport").getValue(String.class);
+                                    police = snapshot.child("userDocuments").child("Police Certificate").getValue(String.class);
                                     dialog.dismiss();
                                     if (bir != null && fml != null && id != null && passport != null && police != null) {
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                startActivity(new Intent(MainActivity.this, StatusRequestActivity.class));
+                                                startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
                                             }
                                         }, 1500);
                                     } else if (userExist != null) {
@@ -110,9 +111,10 @@ public class MainActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onCancelled(@NonNull @org.jetbrains.annotations.NotNull DatabaseError error) {
-
                                 }
                             });
+
+
                         } else {
                             Toast.makeText(MainActivity.this, "משתמש אינו תקין, בדוק את פרטיך", Toast.LENGTH_SHORT).show();
                         }
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public void onBackPressed() { // התנתקות לאחר שתי לחיצות.
+    public void onBackPressed() {
         exitApp();
     }
 
@@ -134,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAuth.signOut();
-                        finish();
+                        finishAffinity();
                         System.exit(0);
                     }
                 })
