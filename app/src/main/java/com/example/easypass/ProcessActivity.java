@@ -56,11 +56,10 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     FirebaseDatabase database;
     DatabaseReference myRef;
     StorageReference storageReference;
-    Bitmap bitmap;
     ImageView PassPortPic, IdPic, BirthdatePic, PolicePic, FamilyTreePic;
     String fileName = "";
     String firstName = null, lastname = null, birthclient = null, idclient = null, passclient = null, policcerclient = null, fmilyclient = null;
-    Uri uriPassPort, uriId, uriTree, uriBirthdate, uriPolice;
+    Uri uriPassPort = null, uriId = null, uriTree = null, uriBirthdate = null, uriPolice = null;
     static int counter = 0, countUploadFirebase = 0;
     String uriPassport = "", uriID = "", uriBirth = "", uriPol = "", uriFamilyTree = "";
 
@@ -147,8 +146,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_upload_pass:
                 fileName = "passport";
                 new AlertDialog.Builder(ProcessActivity.this).
-                        setTitle("אופציות העלאה").
-                        setMessage("בחר אופציית העלאה").
+                        setTitle("אפשרויות העלאה").
+                        setMessage("בחר/י אפשרות העלאה").
                         setPositiveButton("צלם מסמך", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -166,8 +165,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_upload_ID:
                 fileName = "id";
                 new AlertDialog.Builder(ProcessActivity.this).
-                        setTitle("אופציות העלאה").
-                        setMessage("בחר אופציית העלאה").
+                        setTitle("אפשרויות העלאה").
+                        setMessage("בחר/י אפשרות העלאה").
                         setPositiveButton("צלם מסמך", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -185,8 +184,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_upload_birthdate:
                 fileName = "birthdate";
                 new AlertDialog.Builder(ProcessActivity.this).
-                        setTitle("אופציות העלאה").
-                        setMessage("בחר אופציית העלאה").
+                        setTitle("אפשרויות העלאה").
+                        setMessage("בחר/י אפשרות העלאה").
                         setPositiveButton("צלם מסמך", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -204,8 +203,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_upload_police_crteif:
                 fileName = "police";
                 new AlertDialog.Builder(ProcessActivity.this).
-                        setTitle("אופציות העלאה").
-                        setMessage("בחר אופציית העלאה").
+                        setTitle("אפשרויות העלאה").
+                        setMessage("בחר/י אפשרות העלאה").
                         setPositiveButton("צלם מסמך", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -223,8 +222,8 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_upload_family_tree:
                 fileName = "family";
                 new AlertDialog.Builder(ProcessActivity.this).
-                        setTitle("אופציות העלאה").
-                        setMessage("בחר אופציית העלאה").
+                        setTitle("אפשרויות העלאה").
+                        setMessage("בחר/י אפשרות העלאה").
                         setPositiveButton("צלם מסמך", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -240,10 +239,10 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                         setIcon(android.R.drawable.ic_dialog_info).show();
                 break;
             case R.id.SendBtn:
-                if (PolicePic.getDrawable() == null || BirthdatePic.getDrawable() == null || IdPic.getDrawable() == null || PassPortPic.getDrawable() == null) {
+                if (PolicePic.getDrawable().equals(null) || BirthdatePic.getDrawable().equals(null) || IdPic.getDrawable().equals(null) || PassPortPic.getDrawable().equals(null) || FamilyTreePic.getDrawable().equals(null)) {
                     new AlertDialog.Builder(ProcessActivity.this).
                             setTitle("שגיאה").
-                            setMessage("לא עלו כל המסמכים !").
+                            setMessage("לא כל המסמכים עלו !").
                             setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -251,20 +250,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                                 }
                             }).
                             setIcon(android.R.drawable.ic_dialog_alert).show();
-                } else if (findViewById((R.id.tree_view)).getVisibility() == View.GONE) {
-                    new AlertDialog.Builder(ProcessActivity.this).
-                            setTitle("שגיאה").
-                            setMessage("לא הועלאה עץ משפחה !").
-                            setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    return;
-                                }
-                            }).
-                            setIcon(android.R.drawable.ic_dialog_alert).show();
-                    return;
                 } else {
-                    Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
                     String case_number = UUID.randomUUID().toString();
                     case_number = case_number.substring(0, 10);
                     myRef.child("Case number").setValue(case_number);
@@ -349,26 +335,13 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(Intent.createChooser(emailIntent, "שולח מייל..."));
             finish();
             Log.i("מסיים לשלוח את המייל...", "");
+            Toast.makeText(getApplicationContext(), "המסמכים נשלחו בהצלחה !", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(ProcessActivity.this, InstructionsActivity.class));
         } catch (ActivityNotFoundException ex) {
             Toast.makeText(ProcessActivity.this,
                     "אימייל לא תקין...", Toast.LENGTH_SHORT).show();
         }
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_CAMERA) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(getApplicationContext(), "permission granted!", Toast.LENGTH_LONG).show();
-                takeImage();
-            } else {
-                Toast.makeText(getApplicationContext(), "permission declined!", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
 
     private void takeImage() {
         if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -434,39 +407,39 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                 if (resultCode == RESULT_OK) {
                     switch (fileName) {
                         case "passport":
-                            bitmap = (Bitmap) data.getExtras().get("data");
-                            PassPortPic.setImageBitmap(bitmap);
-                            uriPassPort = getImageUri(ProcessActivity.this, bitmap);
-                            counter++;
+                            Bitmap bitmapPass = (Bitmap) data.getExtras().get("data");
+                            uriPassPort = getImageUri(ProcessActivity.this, bitmapPass);
                             UploadToFireStorage(uriPassPort);
+                            PassPortPic.setImageBitmap(bitmapPass);
+                            counter++;
                             break;
                         case "id":
-                            bitmap = (Bitmap) data.getExtras().get("data");
-                            IdPic.setImageBitmap(bitmap);
-                            uriId = getImageUri(ProcessActivity.this, bitmap);
-                            counter++;
+                            Bitmap bitmapId = (Bitmap) data.getExtras().get("data");
+                            uriId = getImageUri(ProcessActivity.this, bitmapId);
                             UploadToFireStorage(uriId);
+                            IdPic.setImageBitmap(bitmapId);
+                            counter++;
                             break;
                         case "birthdate":
-                            bitmap = (Bitmap) data.getExtras().get("data");
-                            BirthdatePic.setImageBitmap(bitmap);
-                            uriBirthdate = getImageUri(ProcessActivity.this, bitmap);
-                            counter++;
+                            Bitmap bitmapBirth = (Bitmap) data.getExtras().get("data");
+                            uriBirthdate = getImageUri(ProcessActivity.this, bitmapBirth);
                             UploadToFireStorage(uriBirthdate);
+                            BirthdatePic.setImageBitmap(bitmapBirth);
+                            counter++;
                             break;
                         case "police":
-                            bitmap = (Bitmap) data.getExtras().get("data");
-                            PolicePic.setImageBitmap(bitmap);
-                            uriPolice = getImageUri(ProcessActivity.this, bitmap);
-                            counter++;
+                            Bitmap bitmapPol = (Bitmap) data.getExtras().get("data");
+                            uriPolice = getImageUri(ProcessActivity.this, bitmapPol);
                             UploadToFireStorage(uriPolice);
+                            PolicePic.setImageBitmap(bitmapPol);
+                            counter++;
                             break;
                         case "family":
-                            bitmap = (Bitmap) data.getExtras().get("data");
-                            FamilyTreePic.setImageBitmap(bitmap);
-                            uriTree = getImageUri(ProcessActivity.this, bitmap);
-                            counter++;
+                            Bitmap bitmapFamily = (Bitmap) data.getExtras().get("data");
+                            uriTree = getImageUri(ProcessActivity.this, bitmapFamily);
                             UploadToFireStorage(uriTree);
+                            FamilyTreePic.setImageBitmap(bitmapFamily);
+                            counter++;
                             break;
                         default:
                             Toast.makeText(getApplicationContext(), "לא הצלחת לעלות תמונה!", Toast.LENGTH_SHORT).show();
@@ -516,13 +489,27 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.WEBP_LOSSLESS, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_CAMERA) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(getApplicationContext(), "הרשאה התקבלה בהצלחה!", Toast.LENGTH_LONG).show();
+                takeImage();
+            } else {
+                Toast.makeText(getApplicationContext(), "לא התקבלה הרשאה!", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
 
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
