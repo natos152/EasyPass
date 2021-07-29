@@ -45,10 +45,9 @@ import java.util.Date;
 import java.util.UUID;
 
 public class ProcessActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "ProcessActivity";
-    private static final int CAPTUE_IMAGE = 1024;
+    private static final int CAPTURE_IMAGE = 1024;
     private static final int PERMISSION_CAMERA = 888;
-    private static final int PICKFILE_RESULT_CODE = 1;
+    private static final int PICK_FILE_RESULT_CODE = 1;
     TextView welcome_mess;
     Button btnPassport, btnID, btnBirthdate, btnPoliceCertificate, btnFamilyTree, btnDownLoad;
     FirebaseAuth mAuth;
@@ -238,10 +237,10 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                         setIcon(android.R.drawable.ic_dialog_info).show();
                 break;
             case R.id.SendBtn:
-                if (PolicePic.getDrawable().equals(null) || BirthdatePic.getDrawable().equals(null) || IdPic.getDrawable().equals(null) || PassPortPic.getDrawable().equals(null) || FamilyTreePic.getDrawable().equals(null)) {
+                if (PolicePic.getDrawable() == null || BirthdatePic.getDrawable() == null || IdPic.getDrawable() == null || PassPortPic.getDrawable() == null || FamilyTreePic.getDrawable() == null) {
                     new AlertDialog.Builder(ProcessActivity.this).
                             setTitle("שגיאה").
-                            setMessage("לא כל המסמכים עלו !").
+                            setMessage("אנא העלא/י את כל המסמכים ורק אז תוכל/י להמשיך לשלב הבא !").
                             setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -281,7 +280,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
             requestPermissions(new String[]{Manifest.permission.CAMERA}, PERMISSION_CAMERA);
         } else {
             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(i, CAPTUE_IMAGE);
+            startActivityForResult(i, CAPTURE_IMAGE);
         }
     }
 
@@ -336,7 +335,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case CAPTUE_IMAGE:
+            case CAPTURE_IMAGE:
                 if (resultCode == RESULT_OK) {
                     switch (fileName) {
                         case "passport":
@@ -380,7 +379,7 @@ public class ProcessActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
                 break;
-            case PICKFILE_RESULT_CODE:
+            case PICK_FILE_RESULT_CODE:
                 if (resultCode == RESULT_OK) {
                     switch (fileName) {
                         case "passport":

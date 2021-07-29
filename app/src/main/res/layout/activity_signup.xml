@@ -9,7 +9,7 @@
 
   <EditText
     android:id="@+id/sign_user"
-    android:layout_width="227dp"
+    android:layout_width="280dp"
     android:layout_height="0dp"
     android:layout_marginBottom="8dp"
     android:layout_weight="2"
@@ -23,14 +23,14 @@
 
   <EditText
     android:id="@+id/sign_pass"
-    android:layout_width="227dp"
+    android:layout_width="280dp"
     android:layout_height="0dp"
     android:layout_marginBottom="6dp"
     android:layout_weight="2"
     android:hint="סיסמא"
-    android:textColorHint="@color/cardview_dark_background"
     android:inputType="textPassword"
     android:textAlignment="textEnd"
+    android:textColorHint="@color/cardview_dark_background"
     app:layout_constraintBottom_toTopOf="@+id/sign_confirm_pass"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -40,28 +40,30 @@
     android:id="@+id/btn_sign_up_cont"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="41dp"
-    android:layout_marginBottom="260dp"
+    android:layout_marginTop="428dp"
+    android:layout_marginBottom="255dp"
     android:backgroundTint="#15720F"
     android:onClick="onClick"
     android:text="סיים הרשמה"
     android:textSize="18sp"
     android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="@+id/sign_confirm_pass"
-    app:layout_constraintTop_toBottomOf="@+id/sign_confirm_pass" />
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
     android:id="@+id/textView3"
-    android:layout_width="228dp"
-    android:layout_height="37dp"
+    android:layout_width="269dp"
+    android:layout_height="40dp"
     android:layout_marginTop="42dp"
     android:layout_marginBottom="28dp"
-    android:text="הרשמת משתמש"
+    android:text="הרשמת משתמש חדש"
     android:textAlignment="center"
     android:textColor="@color/teal_700"
     android:textDirection="firstStrongRtl"
-    android:textSize="24sp"
+    android:textSize="22sp"
     android:textStyle="bold"
     android:visibility="visible"
     app:layout_constraintBottom_toTopOf="@+id/sign_email"
@@ -71,14 +73,14 @@
 
   <EditText
     android:id="@+id/sign_confirm_pass"
-    android:layout_width="226dp"
+    android:layout_width="280dp"
     android:layout_height="0dp"
     android:layout_marginBottom="26dp"
     android:layout_weight="2"
     android:hint="הזן סיסמא שוב"
-    android:textColorHint="@color/cardview_dark_background"
     android:inputType="textPassword"
     android:textAlignment="textEnd"
+    android:textColorHint="@color/cardview_dark_background"
     app:layout_constraintBottom_toTopOf="@+id/btn_sign_up_cont"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +88,7 @@
 
   <EditText
     android:id="@+id/sign_email"
-    android:layout_width="227dp"
+    android:layout_width="280dp"
     android:layout_height="0dp"
     android:layout_marginBottom="6dp"
     android:layout_weight="2"
@@ -96,5 +98,12 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

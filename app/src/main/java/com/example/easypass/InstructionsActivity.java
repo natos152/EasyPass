@@ -101,7 +101,7 @@ public class InstructionsActivity extends AppCompatActivity {
         } else {
             new AlertDialog.Builder(InstructionsActivity.this).
                     setTitle("שגיאת אימות").
-                    setMessage("מספר תיק שגוי, אנא הזנ/י שוב או פני/ה לתמיכה בכתפור יצירת קשר למעלה בצד שמאל על גבי המסך").
+                    setMessage("מספר תיק שגוי, אנא הזנ/י שוב או פני/ה לתמיכה בכפתור יצירת קשר למעלה בצד שמאל על גבי המסך").
                     setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -122,7 +122,7 @@ public class InstructionsActivity extends AppCompatActivity {
         else
             new AlertDialog.Builder(InstructionsActivity.this).
                     setTitle("שגיאה").
-                    setMessage("המסמכים נשלחו כבר, לצערנו לא ניתן לשלוח שוב, אנא פנה/י לתמיכה בכתפור יצירת קשר").
+                    setMessage("המסמכים נשלחו כבר, לצערנו לא ניתן לשלוח שוב, אנא פנה/י לתמיכה בכפתור יצירת קשר").
                     setPositiveButton("בסדר", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         } else {
-                            Toast.makeText(MainActivity.this, "משתמש אינו תקין, בדוק את פרטיך", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "משתמש אינו תקין, בדוק/י את פרטיך", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

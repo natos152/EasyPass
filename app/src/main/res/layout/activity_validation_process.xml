@@ -163,7 +163,7 @@
     android:layout_alignEnd="@id/textView6"
     android:layout_marginRight="15dp"
     android:scrollbarSize="4dp"
-    android:text="7.תורכיה"
+    android:text="7.סוריה"
     android:textColor="@color/black"
     android:textColorHint="@color/black"
     android:textSize="16sp"
